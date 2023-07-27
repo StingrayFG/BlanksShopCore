@@ -28,8 +28,5 @@ namespace ApplicationCore.Entities
             PhoneNumber = phoneNumber;
             Password = password;
         }
-
-
-
     }
 }
