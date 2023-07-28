@@ -10,7 +10,6 @@ namespace ApplicationCore.Entities
     public class Material
     {
         public int ID { get; private set; }
-
         public string Name { get; private set; }
         public double Density { get; private set; }
         public decimal? PricePerKilogram { get; private set; }

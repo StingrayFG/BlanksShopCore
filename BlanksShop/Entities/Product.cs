@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationCore.Entities
 {
-    public class Product
+    public abstract class Product
     {
         public int ID { get; private set; }
 
