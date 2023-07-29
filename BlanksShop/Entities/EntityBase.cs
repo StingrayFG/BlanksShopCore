@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,6 @@ namespace ApplicationCore.Entities
 {
     public abstract class EntityBase
     {
-        public int ID { get; set; }
+        [Key] public int ID { get; private set; }
     }
 }

@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace ApplicationCore.Entities
 {
-    public abstract class Product
+    public abstract class Product: EntityBase
     {
-        public int ID { get; private set; }
-
         public string Name { get; private set; }
         public Vector3 Dimensions { get; private set; }
         public Material Material { get; private set; }
