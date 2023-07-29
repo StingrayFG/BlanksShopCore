@@ -10,33 +10,13 @@ namespace ApplicationCore.Entities
 {
     public abstract class Product: EntityBase
     {
-        public string Name { get; private set; }
-        public Vector3 Dimensions { get; private set; }
-        public Material Material { get; private set; }
+        public string Name { get; set; }
+        public Vector3 Dimensions { get; set; }
+        public Material Material { get; set; }
 
-        public double? Weight { get; private set; }
-        public decimal? Price { get; private set; }
-        public int? Count { get; private set; }
-
-        public Product(int id, string name, Vector3 dimensions, Material material, double weight)
-        {
-            ID = id;
-            Name = name;
-            Dimensions = dimensions;
-            Material = material;
-            Weight = weight;
-            Price = (decimal)weight * material.PricePerKilogram;
-        }
-
-        public Product(string name, Vector3 dimensions, Material material, double weight)
-        {
-            ID = 1;
-            Name = name;
-            Dimensions = dimensions;
-            Material = material;
-            Weight = weight;
-            Price = (decimal)weight * material.PricePerKilogram;
-        }
+        public double? Weight { get; set; }
+        public decimal? Price { get; set; }
+        public int? Count { get; set; }
 
     }
 }

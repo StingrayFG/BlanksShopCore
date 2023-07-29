@@ -10,16 +10,7 @@ namespace ApplicationCore.Entities
 {
     public class Part: Product
     {
-        public decimal ManufacturingCost { get; private set; }
+        public decimal ManufacturingCost { get; set; }
 
-        public Part(int id, string name, Vector3 dimensions, Material material, double weight, decimal manufacturingCost) : base(id, name, dimensions, material, weight)
-        {
-            ManufacturingCost = manufacturingCost;
-        }
-
-        public Part(string name, Vector3 dimensions, Material material, double weight, decimal manufacturingCost) : base(name, dimensions, material, weight)
-        {
-            ManufacturingCost = manufacturingCost;
-        }
     }
 }
