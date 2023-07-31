@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApplicationCore.Entities
+namespace Domain.Entities
 {
     public abstract class EntityBase
     {
-        [Key] public int ID { get; private set; }
+        public int ID { get; set; }
     }
 }
