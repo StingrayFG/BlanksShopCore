@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ApplicationCore.Entities;
-using ApplicationCore.Interfaces;
+using Domain.Entities;
+using Infrastructure.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories
@@ -19,21 +19,26 @@ namespace Infrastructure.Repositories
             _dbContext = dbContext;
         }
 
+        public virtual int GetLastID()
+        {
+            return _dbContext.Set<T>().Max(obj => obj.ID);
+        }
+
         public virtual T? GetByID(int id)
         {
             return _dbContext.Set<T>().Find(id);
         }
 
-        public virtual IEnumerable<T> List()
+        public virtual List<T> GetAll()
         {
-            return _dbContext.Set<T>().AsEnumerable();
+            return _dbContext.Set<T>().ToList();
         }
 
-        public virtual IEnumerable<T> List(System.Linq.Expressions.Expression<Func<T, bool>> predicate)
+        public virtual List<T> GetByQuery(System.Linq.Expressions.Expression<Func<T, bool>> predicate)
         {
             return _dbContext.Set<T>()
                    .Where(predicate)
-                   .AsEnumerable();
+                   .ToList();
         }
 
         public void Add(T entity)
@@ -51,6 +56,12 @@ namespace Infrastructure.Repositories
         public void Delete(T entity)
         {
             _dbContext.Set<T>().Remove(entity);
+            _dbContext.SaveChanges();
+        }
+
+        public void DeleteByID(int id)
+        {
+            _dbContext.Set<T>().Remove((from e in _dbContext.Set<T>() where e.ID == id select e).First());
             _dbContext.SaveChanges();
         }
 
