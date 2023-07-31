@@ -10,33 +10,38 @@ using Infrastructure.Repositories;
 
 namespace Application.Services
 {
-    public class AppService<T>: IService<T> where T : EntityBase
+    public class AppService<T>: IAppService<T> where T : EntityBase
     {
-        protected IRepository<T> Repo;
+        protected IRepository<T> _repository;
 
-        public AppService(Repository<T> repo)
+        public AppService()
         {
-            Repo = repo;
+            _repository = new Repository<T>();
         }
 
-        public void SetRepository(Repository<T> repo)
+        public AppService(IRepository<T> repository)
         {
-            Repo = repo;
+            _repository = repository;
+        }
+
+        public void SetRepository(IRepository<T> repo)
+        {
+            _repository = repo;
         }
 
         public virtual T? GetByID(int id)
         {
-            return Repo.GetByID(id);
+            return _repository.GetByID(id);
         }
 
         public virtual List<T>? GetAll()
         {
-            return Repo.GetAll();
+            return _repository.GetAll();
         }
 
         public virtual void DeleteByID(int id)
         {
-            Repo.DeleteByID(id);
-        }
+            _repository.DeleteByID(id);
+        }   
     }
 }

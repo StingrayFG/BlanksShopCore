@@ -5,13 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using Application.Interfaces;
 using Domain.Entities;
+using Infrastructure.Interfaces;
 using Infrastructure.Repositories;
 
 namespace Application.Services
 {
-    public class CustomerAppService: AppService<Customer>, ICustomerService
+    public class CustomerAppService: AppService<Customer>, ICustomerAppService
     {
-        public CustomerAppService(Repository<Customer> repo): base(repo)
+        public CustomerAppService() { }
+
+        public CustomerAppService(IRepository<Customer> repository): base(repository)
         {
             
         }
@@ -19,29 +22,21 @@ namespace Application.Services
         public void Add(string name, string phoneNumber, string password)
         {
             Customer res = new Customer(name, phoneNumber, password);
-            Repo.Add(res);
+            _repository.Add(res);
         }
 
         public void UpdateName(int id, string name)
         {
-            Customer? res = Repo.GetByID(id);
+            Customer? res = _repository.GetByID(id);
             if (res != null) 
             {
-                res.Name = name;
-                Repo.Update(res);
+                res.UpdateName(name);
+                _repository.Update(res);
             }
             
         }
 
-        public void UpdatePhone(int id, string phone)
-        {
-            Customer? res = Repo.GetByID(id);
-            if (res != null)
-            {
-                res.PhoneNumber = phone;
-                Repo.Update(res);
-            }
-            
-        }
+        
+
     }
 }

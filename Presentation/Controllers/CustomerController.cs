@@ -15,53 +15,46 @@ namespace Presentation.Controllers
     [ApiExplorerSettings(GroupName = "customers")]
     public class CustomerController : Controller
     {
-        public readonly ICustomerService Service;
+        public readonly ICustomerAppService _service;
 
-        public CustomerController(ICustomerService service) 
+        public CustomerController(ICustomerAppService service) 
         {
-            Service = service;
+            _service = service;
         }
 
         [HttpPost]
         [Route("/add")]
         public void Add(string name, string phoneNumber, string password)
         {
-            
+            _service.Add(name, phoneNumber, password);
         }
 
         [HttpPut]
         [Route("/update/name")]
         public void UpdateName(int id, string name)
         {
-            Service.UpdateName(id, name);
-        }
-
-        [HttpPut]
-        [Route("/update/phone")]
-        public void UpdatePhone(int id, string phone)
-        {
-            Service.UpdatePhone(id, phone);
+            _service.UpdateName(id, name);
         }
 
         [HttpGet]
         [Route("/get/all")]
-        public void GetAll()
+        public List<Customer>? GetAll()
         {
-            Service.GetAll();
+            return _service.GetAll();
         }
 
         [HttpGet]
         [Route("/get/byid")]
-        public void GetByID(int id)
+        public Customer? GetByID(int id)
         {
-            Service.GetByID(id);
+            return _service.GetByID(id);
         }
 
         [HttpDelete]
         [Route("/delete/byid")]
         public void DeleteByID(int id)
         {
-            Service.DeleteByID(id);
+            _service.DeleteByID(id);
         }
     }
 }

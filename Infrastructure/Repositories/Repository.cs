@@ -12,16 +12,26 @@ namespace Infrastructure.Repositories
 {
     public class Repository<T> : IRepository<T> where T : EntityBase
     {
-        private readonly ApplicationContext _dbContext;
+        private ApplicationContext _dbContext;
+
+        public Repository()
+        {
+            _dbContext = new ApplicationContext(); 
+        }
 
         public Repository(ApplicationContext dbContext)
         {
             _dbContext = dbContext;
         }
 
+        public void SetContext(ApplicationContext dbContext)
+        {
+            _dbContext = dbContext; 
+        }
+
         public virtual int GetLastID()
         {
-            return _dbContext.Set<T>().Max(obj => obj.ID);
+            return _dbContext.Set<T>().Max(entity => entity.ID);
         }
 
         public virtual T? GetByID(int id)

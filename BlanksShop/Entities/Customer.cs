@@ -28,6 +28,11 @@ namespace Domain.Entities
             Password = password;
         }
 
+        public void UpdateName(string name) 
+        {
+            Name = name;
+        }
+
         
     }
 }

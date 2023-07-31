@@ -9,10 +9,10 @@ using Domain.Entities;
 
 namespace Application.Interfaces
 {
-    public interface ICustomerService: IService<Customer>
+    public interface ICustomerAppService : IAppService<Customer>
     {
         public void Add(string name, string phoneNumber, string password);
         public void UpdateName(int id, string name);
-        public void UpdatePhone(int id, string phone);
+        
     }
 }

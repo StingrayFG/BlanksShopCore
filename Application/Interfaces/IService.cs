@@ -9,7 +9,7 @@ using Domain.Entities;
 
 namespace Application.Interfaces
 {
-    public interface IService<T> where T : EntityBase
+    public interface IAppService<T> where T : EntityBase
     {
         T? GetByID(int id);
         public List<T>? GetAll();
