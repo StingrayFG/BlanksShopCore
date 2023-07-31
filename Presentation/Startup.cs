@@ -12,6 +12,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Application.Interfaces;
+using Application.Services;
+using Domain.Entities;
 
 namespace Presentation
 {
@@ -27,6 +30,8 @@ namespace Presentation
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IService<EntityBase>, AppService<EntityBase>>();
+
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",

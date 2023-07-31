@@ -7,9 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain.csproj", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "..\Infrastructure\Infrastructure.csproj", "{32603597-E022-4152-A80A-19364800997F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "..\Presentation\Presentation.csproj", "{37100312-5649-4EFB-971C-1C44A7DB60CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Presentation", "..\Presentation\Presentation.csproj", "{37100312-5649-4EFB-971C-1C44A7DB60CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "..\Application\Application.csproj", "{3CA1DA2F-2A4C-4E0E-A84B-1BEE1778B190}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "..\Application\Application.csproj", "{3CA1DA2F-2A4C-4E0E-A84B-1BEE1778B190}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5676AE8F-56BC-4670-B191-DA5109093F18} = {5676AE8F-56BC-4670-B191-DA5109093F18}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

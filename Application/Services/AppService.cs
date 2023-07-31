@@ -3,23 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Application.Interfaces;
 using Domain.Entities;
 using Infrastructure.Interfaces;
 using Infrastructure.Repositories;
 
 namespace Application.Services
 {
-    public class AppService<T> where T : EntityBase
+    public class AppService<T>: IService<T> where T : EntityBase
     {
-        protected Repository<T> Repo;
+        protected IRepository<T> Repo;
 
         public AppService(Repository<T> repo)
         {
             Repo = repo;
         }
 
-        [System.ComponentModel.DataObjectMethod
-        (System.ComponentModel.DataObjectMethodType.Select, true)]
+        public void SetRepository(Repository<T> repo)
+        {
+            Repo = repo;
+        }
 
         public virtual T? GetByID(int id)
         {
@@ -29,11 +32,6 @@ namespace Application.Services
         public virtual List<T>? GetAll()
         {
             return Repo.GetAll();
-        }
-
-        public virtual void Delete(T entity)
-        {
-            Repo.Delete(entity);
         }
 
         public virtual void DeleteByID(int id)
