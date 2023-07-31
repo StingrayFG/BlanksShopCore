@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hwVrAv3g0YUQlQYVUl/moamGbCnIbQEG10mg2O2pThJtfgcG/2Y4TjMIlr7D3mbSty3XjYGm9o4erhrX0Pxz+Q==",
+  "dgSpecHash": "nktXr0mHEzLP246tpB83xJ43qrYEIf+sTNuUm+Q+YnG7TKMbvSO9D2gAjKMtkLNODAqCUXaB4SBTk8MpWoHyog==",
   "success": true,
-  "projectFilePath": "C:\\Web\\BlanksShop\\BlanksShop\\ApplicationCore.csproj",
+  "projectFilePath": "C:\\Web\\BlanksShopCore\\BlanksShop\\Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

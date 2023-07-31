@@ -11,7 +11,7 @@ namespace Application.Services
 {
     public class AppService<T> where T : EntityBase
     {
-        private Repository<T> Repo;
+        protected Repository<T> Repo;
 
         public AppService(Repository<T> repo)
         {
@@ -20,11 +20,6 @@ namespace Application.Services
 
         [System.ComponentModel.DataObjectMethod
         (System.ComponentModel.DataObjectMethodType.Select, true)]
-
-        public virtual void Add()
-        {
-
-        }
 
         public virtual T? GetByID(int id)
         {
@@ -36,8 +31,12 @@ namespace Application.Services
             return Repo.GetAll();
         }
 
+        public virtual void Delete(T entity)
+        {
+            Repo.Delete(entity);
+        }
 
-        public virtual void Delete(int id)
+        public virtual void DeleteByID(int id)
         {
             Repo.DeleteByID(id);
         }

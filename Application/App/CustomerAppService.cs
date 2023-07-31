@@ -12,6 +12,12 @@ namespace Application.Services
     {
         public CustomerAppService(Repository<Customer> repo): base(repo)
         {
+
+        }
+        public void Add(string name, string phoneNumber, string password)
+        {
+            Customer res = new Customer(name, phoneNumber, password);
+            Repo.Add(res);
         }
     }
 }

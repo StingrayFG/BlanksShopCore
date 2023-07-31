@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Web\\BlanksShop\\BlanksShop\\ApplicationCore.csproj",
-      "projectName": "ApplicationCore",
-      "projectPath": "C:\\Web\\BlanksShop\\BlanksShop\\ApplicationCore.csproj",
+      "projectUniqueName": "C:\\Web\\BlanksShopCore\\BlanksShop\\Domain.csproj",
+      "projectName": "Domain",
+      "projectPath": "C:\\Web\\BlanksShopCore\\BlanksShop\\Domain.csproj",
       "packagesPath": "C:\\Users\\igorz\\.nuget\\packages\\",
-      "outputPath": "C:\\Web\\BlanksShop\\BlanksShop\\obj\\",
+      "outputPath": "C:\\Web\\BlanksShopCore\\BlanksShop\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\igorz\\AppData\\Roaming\\NuGet\\NuGet.Config",

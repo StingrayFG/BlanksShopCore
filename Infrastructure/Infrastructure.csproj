@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BlanksShop\ApplicationCore.csproj" />
+    <ProjectReference Include="..\BlanksShop\Domain.csproj" />
   </ItemGroup>
 
 </Project>
