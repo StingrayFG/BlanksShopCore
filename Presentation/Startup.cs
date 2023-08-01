@@ -36,6 +36,8 @@ namespace Presentation
             //services.AddSingleton<CustomerController>();
             services.AddTransient<ICustomerAppService, CustomerAppService>();
             services.AddTransient<IRepository<Customer>, Repository<Customer>>();
+            services.AddTransient<IMaterialAppService, MaterialAppService>();
+            services.AddTransient<IRepository<Material>, Repository<Material>>();
 
             services.AddCors(options =>
             {

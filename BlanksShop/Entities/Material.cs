@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,6 +11,8 @@ namespace Domain.Entities
         public string Name { get; set; }
         public double Density { get; set; }
         public decimal? PricePerKilogram { get; set; }
+
+        public Material() { }
 
         public Material(int id, string name, double density, decimal pricePerKilogram)
         {
@@ -28,6 +29,7 @@ namespace Domain.Entities
             Density = density;
             PricePerKilogram = pricePerKilogram;
         }
+
         public void UpdateName(string name)
         {
             Name = name;
