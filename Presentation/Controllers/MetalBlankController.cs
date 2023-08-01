@@ -14,11 +14,11 @@ namespace Presentation.Controllers
     [ApiController]
     [Route("metalblanks")]
     [ApiExplorerSettings(GroupName = "metalblanks")]
-    public class BlankController : Controller
+    public class MetalBlankController : Controller
     {
         public readonly IMetalBlankAppService _service;
 
-        public BlankController(IMetalBlankAppService service) 
+        public MetalBlankController(IMetalBlankAppService service) 
         {
             _service = service;
         }
