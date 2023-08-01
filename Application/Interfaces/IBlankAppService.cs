@@ -10,10 +10,12 @@ using Domain.Entities;
 
 namespace Application.Interfaces
 {
-    public interface IMaterialAppService : IAppService<Material>
+    public interface IBlankAppService : IAppService<MetalBlank>
     {
-        public void Add(string name, double density, decimal pricePerKilogram);
+        public void Add(string name, Vector3 dimensions, int materialID);
         public void UpdateName(int id, string name);
+        public void UpdateMaterial(int id, int materialID);
 
     }
 }
+

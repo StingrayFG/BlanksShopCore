@@ -10,13 +10,13 @@ using Infrastructure.Repositories;
 
 namespace Application.Services
 {
-    public class MaterialAppService: AppService<Material>, IMaterialAppService
+    public class MaterialAppService : AppService<Material>, IMaterialAppService
     {
         public MaterialAppService() { }
 
-        public MaterialAppService(IRepository<Material> repository): base(repository)
+        public MaterialAppService(IRepository<Material> repository) : base(repository)
         {
-            
+
         }
 
         public void Add(string name, double density, decimal pricePerKilogram)
@@ -28,15 +28,15 @@ namespace Application.Services
         public void UpdateName(int id, string name)
         {
             Material? res = _repository.GetByID(id);
-            if (res != null) 
+            if (res != null)
             {
                 res.UpdateName(name);
                 _repository.Update(res);
             }
-            
+
         }
 
-        
+
 
     }
 }

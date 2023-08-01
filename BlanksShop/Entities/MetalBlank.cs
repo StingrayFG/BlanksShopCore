@@ -19,5 +19,10 @@ namespace Domain.Entities
         {
 
         }
+
+        public void UpdateMaterial(Material material)
+        {
+            Material = material;
+        }
     }
 }
