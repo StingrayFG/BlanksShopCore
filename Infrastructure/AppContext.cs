@@ -27,7 +27,8 @@ namespace Infrastructure
                 .AddJsonFile("appsettings.json");
 
             var config = builder.Build();
-            string connectionString = config.GetConnectionString("DefaultConnection");
+            //string connectionString = config.GetConnectionString("DefaultConnection");
+            string connectionString = "Server=localhost\\SQLEXPRESS; Database=pr; Trusted_Connection=True; TrustServerCertificate=true;";
 
             optionsBuilder.UseSqlServer(connectionString);
         }
