@@ -10,7 +10,7 @@ using Domain.Entities;
 
 namespace Application.Interfaces
 {
-    public interface IBlankAppService : IAppService<MetalBlank>
+    public interface IMetalBlankAppService : IAppService<MetalBlank>
     {
         public void Add(string name, Vector3 dimensions, int materialID);
         public void UpdateName(int id, string name);

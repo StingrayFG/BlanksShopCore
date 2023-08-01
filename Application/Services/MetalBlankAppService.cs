@@ -11,16 +11,16 @@ using Infrastructure.Repositories;
 
 namespace Application.Services
 {
-    public class BlankAppService : AppService<MetalBlank>, IBlankAppService
+    public class MetalBlankAppService : AppService<MetalBlank>, IMetalBlankAppService
     {
         IRepository<Material> _materialsRepository;
 
-        public BlankAppService() : base()
+        public MetalBlankAppService() : base()
         {
             _materialsRepository = new Repository<Material>();
         }
 
-        public BlankAppService(IRepository<MetalBlank> repository, IRepository<Material> materialsRepository) : base(repository)
+        public MetalBlankAppService(IRepository<MetalBlank> repository, IRepository<Material> materialsRepository) : base(repository)
         {
             _materialsRepository = materialsRepository;
         }

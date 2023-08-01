@@ -12,13 +12,13 @@ using System.Numerics;
 namespace Presentation.Controllers
 {
     [ApiController]
-    [Route("materials")]
-    [ApiExplorerSettings(GroupName = "materials")]
+    [Route("metalblanks")]
+    [ApiExplorerSettings(GroupName = "metalblanks")]
     public class BlankController : Controller
     {
-        public readonly IBlankAppService _service;
+        public readonly IMetalBlankAppService _service;
 
-        public BlankController(IBlankAppService service) 
+        public BlankController(IMetalBlankAppService service) 
         {
             _service = service;
         }
