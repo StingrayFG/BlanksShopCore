@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class Part: Product
-    {
-        public decimal ManufacturingCost { get; set; }
+    //public class Part: Product
+    //{
+    //    public decimal ManufacturingCost { get; set; }
 
-    }
+    //}
 }

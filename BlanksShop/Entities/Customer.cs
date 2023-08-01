@@ -33,6 +33,6 @@ namespace Domain.Entities
             Name = name;
         }
 
-        
+
     }
 }

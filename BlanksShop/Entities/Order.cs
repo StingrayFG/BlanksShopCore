@@ -10,8 +10,7 @@ namespace Domain.Entities
     {
         public DateTime OrderCreationDate { get; set; }
         public decimal Price { get; set; }
-        public string PaymentMethod { get; set; }
-
+        public string? PaymentMethod { get; set; }
         public int CustomerID { get; set; }
     }
 }
