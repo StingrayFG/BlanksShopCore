@@ -17,7 +17,8 @@ namespace Infrastructure
         //public DbSet<ShoppingCart> ShoppingCarts { get; set; }
         //public DbSet<Part> Parts { get; set; }
         //public DbSet<MetalBlank> MetalBlanks { get; set; }
-        //public DbSet<Machine> Machines { get; set; }
+        public DbSet<Material> Materials { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -26,7 +27,7 @@ namespace Infrastructure
                 .AddJsonFile("appsettings.json");
 
             var config = builder.Build();
-            string connectionString = "Server=localhost\\SQLEXPRESS; Database=pr; Trusted_Connection=True; TrustServerCertificate=true;";
+            string connectionString = config.GetConnectionString("DefaultConnection");
 
             optionsBuilder.UseSqlServer(connectionString);
         }

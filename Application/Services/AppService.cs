@@ -24,9 +24,9 @@ namespace Application.Services
             _repository = repository;
         }
 
-        public void SetRepository(IRepository<T> repo)
+        public virtual void SetRepository(IRepository<T> repository)
         {
-            _repository = repo;
+            _repository = repository;
         }
 
         public virtual T? GetByID(int id)

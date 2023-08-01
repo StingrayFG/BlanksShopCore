@@ -11,22 +11,22 @@ using Domain.Entities;
 namespace Presentation.Controllers
 {
     [ApiController]
-    [Route("customers")]
-    [ApiExplorerSettings(GroupName = "customers")]
-    public class CustomerController : Controller
+    [Route("materials")]
+    [ApiExplorerSettings(GroupName = "materials")]
+    public class MaterialController : Controller
     {
-        public readonly ICustomerAppService _service;
+        public readonly IMaterialAppService _service;
 
-        public CustomerController(ICustomerAppService service) 
+        public MaterialController(IMaterialAppService service) 
         {
             _service = service;
         }
 
         [HttpPost]
         [Route("add")]
-        public void Add(string name, string phoneNumber, string password)
+        public void Add(string name, double density, decimal pricePerKilogram)
         {
-            _service.Add(name, phoneNumber, password);
+            _service.Add(name, density, pricePerKilogram);
         }
 
         [HttpPut]
@@ -38,14 +38,14 @@ namespace Presentation.Controllers
 
         [HttpGet]
         [Route("get/all")]
-        public List<Customer>? GetAll()
+        public List<Material>? GetAll()
         {
             return _service.GetAll();
         }
 
         [HttpGet]
         [Route("get/byid")]
-        public Customer? GetByID(int id)
+        public Material? GetByID(int id)
         {
             return _service.GetByID(id);
         }

@@ -9,9 +9,9 @@ using Domain.Entities;
 
 namespace Application.Interfaces
 {
-    public interface ICustomerAppService : IAppService<Customer>
+    public interface IMaterialAppService : IAppService<Material>
     {
-        public void Add(string name, string phoneNumber, string password);
+        public void Add(string name, double density, decimal pricePerKilogram);
         public void UpdateName(int id, string name);
         
     }

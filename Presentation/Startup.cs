@@ -52,10 +52,9 @@ namespace Presentation
                 options.SwaggerDoc("customers", new OpenApiInfo { Title = "customers", Version = "v1" });
                 options.SwaggerDoc("orders", new OpenApiInfo { Title = "orders", Version = "v1" });
                 options.SwaggerDoc("shoppingcarts", new OpenApiInfo { Title = "shoppingcarts", Version = "v1" });
-
                 options.SwaggerDoc("parts", new OpenApiInfo { Title = "parts", Version = "v1" });
                 options.SwaggerDoc("metalblanks", new OpenApiInfo { Title = "metalblanks", Version = "v1" });
-                options.SwaggerDoc("machines", new OpenApiInfo { Title = "machines", Version = "v1" });
+                options.SwaggerDoc("materials", new OpenApiInfo { Title = "materials", Version = "v1" });
             });
         }
 
@@ -74,7 +73,7 @@ namespace Presentation
 
                     options.SwaggerEndpoint("/swagger/parts/swagger.json", "parts");
                     options.SwaggerEndpoint("/swagger/metalblanks/swagger.json", "metalblanks");
-                    options.SwaggerEndpoint("/swagger/machines/swagger.json", "machines");
+                    options.SwaggerEndpoint("/swagger/materials/swagger.json", "materials");
                 });
             }
 
