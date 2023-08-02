@@ -11,7 +11,7 @@ namespace Infrastructure.Interfaces
 {
     public interface IRepository<T> where T : EntityBase
     {
-        T? GetByID(int id);
+        public T? GetByID(int id);
         public List<T>? GetAll();
         public List<T> GetByQuery(Expression<Func<T, bool>> predicate);
         public void Add(T entity);

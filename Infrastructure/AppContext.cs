@@ -16,7 +16,7 @@ namespace Infrastructure
         //public DbSet<Order> Orders { get; set; }
         //public DbSet<ShoppingCart> ShoppingCarts { get; set; }
         //public DbSet<Part> Parts { get; set; }
-        //public DbSet<MetalBlank> MetalBlanks { get; set; }
+        public DbSet<MetalBlank> MetalBlanks { get; set; }
         public DbSet<Material> Materials { get; set; }
 
 
@@ -27,10 +27,12 @@ namespace Infrastructure
                 .AddJsonFile("appsettings.json");
 
             var config = builder.Build();
+
             //string connectionString = config.GetConnectionString("DefaultConnection");
             string connectionString = "Server=localhost\\SQLEXPRESS; Database=pr; Trusted_Connection=True; TrustServerCertificate=true;";
 
             optionsBuilder.UseSqlServer(connectionString);
         }
+
     }
 }
