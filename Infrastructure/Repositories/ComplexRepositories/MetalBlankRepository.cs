@@ -13,19 +13,19 @@ namespace Infrastructure.Repositories
     public class MetalBlankRepository : IRepository<MetalBlank>
     {
         private IRepository<MetalBlankEF> _metalBlankRepository;
-        private IRepository<Material> _materialBlankRepository;
+        private IRepository<Material> _materialRepository;
 
 
         public MetalBlankRepository()
         {
             _metalBlankRepository = new Repository<MetalBlankEF>();
-            _materialBlankRepository = new Repository<Material>();
+            _materialRepository = new Repository<Material>();
         }
 
-        public MetalBlankRepository(IRepository<MetalBlankEF> metalBlankRepository, IRepository<Material> materialBlankRepository)
+        public MetalBlankRepository(IRepository<MetalBlankEF> metalBlankRepository, IRepository<Material> materialRepository)
         {
             _metalBlankRepository = metalBlankRepository;
-            _materialBlankRepository = materialBlankRepository;
+            _materialRepository = materialRepository;
         }
 
         public void Add(MetalBlank metalBlank)
@@ -39,7 +39,7 @@ namespace Infrastructure.Repositories
             MetalBlankEF? metalBlankEF = _metalBlankRepository.GetByID(id);
             if (metalBlankEF != null)
             {
-                Material? material = _materialBlankRepository.GetByID(metalBlankEF.MaterialID);
+                Material? material = _materialRepository.GetByID(metalBlankEF.MaterialID);
                 MetalBlank metalBlank = metalBlankEF.Convert(material);
                 return metalBlank;
             }
@@ -57,7 +57,7 @@ namespace Infrastructure.Repositories
                 List<MetalBlank> res = new List<MetalBlank>();
                 foreach (MetalBlankEF metalBlankEF in metalBlanksEF)
                 {
-                    Material? material = _materialBlankRepository.GetByID(metalBlankEF.MaterialID);
+                    Material? material = _materialRepository.GetByID(metalBlankEF.MaterialID);
                     MetalBlank metalBlank = metalBlankEF.Convert(material);
                     res.Add(metalBlank);
                 }
