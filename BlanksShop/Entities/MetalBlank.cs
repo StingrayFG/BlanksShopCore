@@ -10,6 +10,8 @@ namespace Domain.Entities
 {
     public class MetalBlank: Product
     {
+        public MetalBlank(): base() { }
+
         public MetalBlank(int id, string name, Vector3 dimensions, Material material) : base(id, name, dimensions, material)
         {
 

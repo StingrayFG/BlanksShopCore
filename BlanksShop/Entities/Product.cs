@@ -18,6 +18,11 @@ namespace Domain.Entities
         public decimal? Price { get; set; }
         public int? Count { get; set; }
 
+        public Product()
+        {
+
+        }
+
         public Product(int id, string name, Vector3 dimensions, Material material)
         {
             ID = id;

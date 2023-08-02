@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using Domain.Entities;
+using Infrastructure.EntitiesEF;
 
 namespace Infrastructure
 {
@@ -16,7 +17,7 @@ namespace Infrastructure
         //public DbSet<Order> Orders { get; set; }
         //public DbSet<ShoppingCart> ShoppingCarts { get; set; }
         //public DbSet<Part> Parts { get; set; }
-        public DbSet<MetalBlank> MetalBlanks { get; set; }
+        public DbSet<MetalBlankEF> MetalBlanks { get; set; }
         public DbSet<Material> Materials { get; set; }
 
 
