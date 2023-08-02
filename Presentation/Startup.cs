@@ -39,7 +39,7 @@ namespace Presentation
             services.AddTransient<IMaterialAppService, MaterialAppService>();
             services.AddTransient<IRepository<Material>, Repository<Material>>();
             services.AddTransient<IMetalBlankAppService, MetalBlankAppService>();
-            services.AddTransient<IRepository<MetalBlank>, Repository<MetalBlank>>();
+            services.AddTransient<IRepository<MetalBlank>, MetalBlankRepository>();
 
             services.AddCors(options =>
             {
