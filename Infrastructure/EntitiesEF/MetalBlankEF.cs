@@ -20,6 +20,11 @@ namespace Infrastructure.EntitiesEF
         public decimal? Price { get; set; }
         public int? Count { get; set; }
 
+        public MetalBlankEF()
+        {
+
+        }
+
         public MetalBlankEF(MetalBlank metalBlank)
         {
             ID = metalBlank.ID;
