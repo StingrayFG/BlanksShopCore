@@ -38,14 +38,21 @@ namespace Domain.Entities
             }
         }
 
+        public void UpdateOrder(int orderID)
+        {
+            OrderID = orderID;
+        }
+
         public void AddProduct(Product p)
         {
             Products.Add(p);
+            RecalcPrice();
         }
 
         public void RemoveProduct(Product p) 
         {
             Products.Remove(p);
+            RecalcPrice();
         }
     }
 }
