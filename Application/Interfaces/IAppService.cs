@@ -11,7 +11,7 @@ namespace Application.Interfaces
 {
     public interface IAppService<T> where T : EntityBase
     {
-        T? GetByID(int id);
+        public T? GetByID(int id);
         public List<T>? GetAll();
         public void DeleteByID(int id);
 
