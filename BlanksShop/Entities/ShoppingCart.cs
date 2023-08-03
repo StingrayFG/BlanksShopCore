@@ -13,6 +13,10 @@ namespace Domain.Entities
         public int? OrderID { get; set; }
 
         public List<Product>? Products { get; set; }
+        public ShoppingCart()
+        {
+ 
+        }
 
         public ShoppingCart(int id, int customerID)
         {
