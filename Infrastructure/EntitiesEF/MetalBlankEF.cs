@@ -8,7 +8,7 @@ using Domain.Entities;
 
 namespace Infrastructure.EntitiesEF
 {
-    public class MetalBlankEF: EntityBase
+    public class MetalBlankEF: MetalBlank
     {
         public string Name { get; set; }
         public double Width { get; set; }
@@ -38,7 +38,7 @@ namespace Infrastructure.EntitiesEF
             Count = metalBlank.Count;
         }
 
-        public MetalBlank Convert(Material material)
+        public MetalBlank Convert()
         {
             MetalBlank metalBlank = new MetalBlank
             {
