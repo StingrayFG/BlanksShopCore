@@ -62,7 +62,7 @@ namespace Presentation.Controllers
         [Route("delete/byid")]
         public void DeleteByID(int id)
         {
-            
+            _service.DeleteByID(id);
         }
     }
 }
