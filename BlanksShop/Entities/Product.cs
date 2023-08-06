@@ -11,7 +11,7 @@ namespace Domain.Entities
     public abstract class Product: EntityBase
     {
         public string Name { get; set; }
-        public Vector3 Dimensions { get; set; }
+        public Dimensions Dimensions { get; set; }
         public Material Material { get; set; }
 
         public double? Weight { get; set; }
@@ -23,7 +23,7 @@ namespace Domain.Entities
 
         }
 
-        public Product(int id, string name, Vector3 dimensions, Material material)
+        public Product(int id, string name, Dimensions dimensions, Material material)
         {
             ID = id;
             Name = name;
@@ -31,7 +31,7 @@ namespace Domain.Entities
             Material = material;
         }
 
-        public Product(string name, Vector3 dimensions, Material material)
+        public Product(string name, Dimensions dimensions, Material material)
         {
             ID = 0;
             Name = name;

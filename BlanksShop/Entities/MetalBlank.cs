@@ -12,12 +12,12 @@ namespace Domain.Entities
     {
         public MetalBlank(): base() { }
 
-        public MetalBlank(int id, string name, Vector3 dimensions, Material material) : base(id, name, dimensions, material)
+        public MetalBlank(int id, string name, Dimensions dimensions, Material material) : base(id, name, dimensions, material)
         {
 
         }
 
-        public MetalBlank(string name, Vector3 dimensions, Material material): base (name, dimensions, material)
+        public MetalBlank(string name, Dimensions dimensions, Material material): base (name, dimensions, material)
         {
 
         }

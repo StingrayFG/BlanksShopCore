@@ -29,9 +29,9 @@ namespace Infrastructure.EntitiesEF
         {
             ID = metalBlank.ID;
             Name = metalBlank.Name;
-            Width = metalBlank.Dimensions.X;
-            Height = metalBlank.Dimensions.Y;
-            Length = metalBlank.Dimensions.Z;
+            Width = metalBlank.Dimensions.Width;
+            Height = metalBlank.Dimensions.Height;
+            Length = metalBlank.Dimensions.Length;
             MaterialID = metalBlank.Material.ID;
             Weight = metalBlank.Weight;
             Price = metalBlank.Price;
@@ -44,7 +44,7 @@ namespace Infrastructure.EntitiesEF
             {
                 ID = this.ID,
                 Name = this.Name,
-                Dimensions = new Vector3((float)Width, (float)Height, (float)Length),
+                Dimensions = new Dimensions(Width, Height, Length),
                 Weight = this.Weight,
                 Price = this.Price,
                 Count = this.Count,

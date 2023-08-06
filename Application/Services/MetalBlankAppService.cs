@@ -28,7 +28,7 @@ namespace Application.Services
             _materialsRepository = materialsRepository;
         }
 
-        public void Add(string name, Vector3 dimensions, int materialID)
+        public void Add(string name, Dimensions dimensions, int materialID)
         {
             Material? material = _materialsRepository.GetByID(materialID);
             if (material != null) 
