@@ -11,17 +11,20 @@ using Infrastructure.Repositories;
 
 namespace Application.Services
 {
-    public class MetalBlankAppService : AppService<MetalBlank>, IMetalBlankAppService
+    public class MetalBlankAppService : IMetalBlankAppService<MetalBlank>
     {
-        IRepository<Material> _materialsRepository;
+        protected IMetalBlankRepository<MetalBlank> _repository;
+        protected IRepository<Material> _materialsRepository;
 
-        public MetalBlankAppService() : base()
+        public MetalBlankAppService()
         {
+            _repository = new MetalBlankRepository();
             _materialsRepository = new Repository<Material>();
         }
 
-        public MetalBlankAppService(IRepository<MetalBlank> repository, IRepository<Material> materialsRepository) : base(repository)
+        public MetalBlankAppService(IMetalBlankRepository<MetalBlank> repository, IRepository<Material> materialsRepository)
         {
+            _repository = repository;
             _materialsRepository = materialsRepository;
         }
 
@@ -34,6 +37,18 @@ namespace Application.Services
                 _repository.Add(res);
             }     
         }
+
+
+        public virtual MetalBlank? GetByID(int id)
+        {
+            return _repository.GetByID(id);
+        }
+
+        public virtual List<MetalBlank>? GetAll()
+        {
+            return _repository.GetAll();
+        }
+
 
         public void UpdateName(int id, string name)
         {
@@ -56,6 +71,11 @@ namespace Application.Services
                 _repository.Update(res);
             }
 
+        }
+
+        public virtual void DeleteByID(int id)
+        {
+            _repository.DeleteByID(id);
         }
     }
 }

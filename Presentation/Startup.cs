@@ -38,8 +38,11 @@ namespace Presentation
             services.AddTransient<IRepository<Customer>, Repository<Customer>>();
             services.AddTransient<IMaterialAppService, MaterialAppService>();
             services.AddTransient<IRepository<Material>, Repository<Material>>();
-            services.AddTransient<IMetalBlankAppService, MetalBlankAppService>();
-            services.AddTransient<IRepository<MetalBlank>, MetalBlankRepository>();
+
+            services.AddTransient<IMetalBlankAppService<MetalBlank>, MetalBlankAppService>();
+            services.AddTransient<IMetalBlankRepository<MetalBlank>, MetalBlankRepository>();
+            services.AddTransient<IShoppingCartAppService<ShoppingCart>, ShoppingCartAppService>();
+            services.AddTransient<IShoppingCartRepository<ShoppingCart>, ShoppingCartRepository>();
 
             services.AddCors(options =>
             {

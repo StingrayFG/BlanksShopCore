@@ -10,7 +10,7 @@ using Infrastructure.EntitiesEF;
 
 namespace Infrastructure.Repositories
 {
-    public class MetalBlankRepository : IRepository<MetalBlank>
+    public class MetalBlankRepository : IMetalBlankRepository<MetalBlank>
     {
         private IRepository<MetalBlankEF> _metalBlankRepository;
         private IRepository<Material> _materialRepository;
@@ -40,7 +40,8 @@ namespace Infrastructure.Repositories
             if (metalBlankEF != null)
             {
                 Material? material = _materialRepository.GetByID(metalBlankEF.MaterialID);
-                MetalBlank metalBlank = metalBlankEF.Convert(material);
+                MetalBlank metalBlank = metalBlankEF.Convert();
+                metalBlank.UpdateMaterial(material);
                 return metalBlank;
             }
             else
@@ -58,7 +59,8 @@ namespace Infrastructure.Repositories
                 foreach (MetalBlankEF metalBlankEF in metalBlanksEF)
                 {
                     Material? material = _materialRepository.GetByID(metalBlankEF.MaterialID);
-                    MetalBlank metalBlank = metalBlankEF.Convert(material);
+                    MetalBlank metalBlank = metalBlankEF.Convert();
+                    metalBlank.UpdateMaterial(material);
                     res.Add(metalBlank);
                 }
                 return res;

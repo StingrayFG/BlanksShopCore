@@ -16,9 +16,9 @@ namespace Presentation.Controllers
     [ApiExplorerSettings(GroupName = "metalblanks")]
     public class MetalBlankController : Controller
     {
-        public readonly IMetalBlankAppService _service;
+        public readonly IMetalBlankAppService<MetalBlank> _service;
 
-        public MetalBlankController(IMetalBlankAppService service) 
+        public MetalBlankController(IMetalBlankAppService<MetalBlank> service) 
         {
             _service = service;
         }

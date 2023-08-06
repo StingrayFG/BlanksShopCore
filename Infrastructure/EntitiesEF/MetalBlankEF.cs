@@ -8,7 +8,7 @@ using Domain.Entities;
 
 namespace Infrastructure.EntitiesEF
 {
-    public class MetalBlankEF: MetalBlank
+    public class MetalBlankEF: EntityBase
     {
         public string Name { get; set; }
         public double Width { get; set; }
