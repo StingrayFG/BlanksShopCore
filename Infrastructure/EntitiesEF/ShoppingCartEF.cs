@@ -8,7 +8,7 @@ using Domain.Entities;
 
 namespace Infrastructure.EntitiesEF
 {
-    public class ShoppingCartEF: ShoppingCart
+    public class ShoppingCartEF: EntityBase
     {
         public int CustomerID { get; set; }
         public int? OrderID { get; set; }
@@ -21,18 +21,11 @@ namespace Infrastructure.EntitiesEF
 
         }
 
-        public ShoppingCartEF(ShoppingCart shoppingCart, Product product)
+        public void Convert(ShoppingCart shoppingCart)
         {
-            
-        }
-
-        public ShoppingCart Convert()
-        {
-            return new ShoppingCart()
-            {
-                CustomerID = CustomerID,
-                OrderID = OrderID
-            };
+            shoppingCart.ID = this.ID;
+            shoppingCart.CustomerID = this.CustomerID;
+            shoppingCart.OrderID = this.OrderID;    
         }
     }
 }
