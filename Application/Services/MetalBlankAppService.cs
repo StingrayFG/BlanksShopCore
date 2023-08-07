@@ -33,7 +33,7 @@ namespace Application.Services
             Material? material = _materialsRepository.GetByID(materialID);
             if (material != null) 
             {
-                MetalBlank res = new MetalBlank(name, dimensions, material);
+                MetalBlank res = new MetalBlank(_repository.GetLastID(), name, dimensions, material);
                 _repository.Add(res);
             }     
         }

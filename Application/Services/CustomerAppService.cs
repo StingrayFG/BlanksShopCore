@@ -21,7 +21,7 @@ namespace Application.Services
 
         public void Add(string name, string phoneNumber, string password)
         {
-            Customer res = new Customer(name, phoneNumber, password);
+            Customer res = new Customer(_repository.GetLastID(), name, phoneNumber, password);
             _repository.Add(res);
         }
 

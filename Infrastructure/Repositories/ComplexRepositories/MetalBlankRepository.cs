@@ -34,6 +34,11 @@ namespace Infrastructure.Repositories
             _metalBlankRepository.Add(metalBlankEF);
         }
 
+        public int GetLastID()
+        {
+            return _metalBlankRepository.GetLastID();
+        }
+
         public MetalBlank? GetByID(int id)
         {
             MetalBlankEF? metalBlankEF = _metalBlankRepository.GetByID(id);

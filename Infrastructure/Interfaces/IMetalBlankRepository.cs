@@ -11,9 +11,10 @@ namespace Infrastructure.Interfaces
 {
     public interface IMetalBlankRepository<T>
     {
+        public void Add(T entity);
+        public int GetLastID();
         public T? GetByID(int id);
         public List<T>? GetAll();
-        public void Add(T entity);
         public void Update(T entity);
         public void Delete(T entity);
         public void DeleteByID(int id);
