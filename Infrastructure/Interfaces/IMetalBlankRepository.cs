@@ -9,7 +9,7 @@ using Domain.Entities;
 
 namespace Infrastructure.Interfaces
 {
-    public interface IMetalBlankRepository<T> where T : MetalBlank
+    public interface IMetalBlankRepository<T>
     {
         public T? GetByID(int id);
         public List<T>? GetAll();
