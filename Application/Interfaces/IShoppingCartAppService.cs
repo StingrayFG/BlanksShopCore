@@ -13,8 +13,10 @@ namespace Application.Interfaces
     {
         public void AddProduct(int customerID, int productID);
         public void DeleteProductByID(int customerID, int productID);
+
         public T? GetByID(int id);
-        public T? GetByCustomer(int customerID);
+        public T? GetCurrentByCustomer(int customerID);
+        public List<T>? GetByCustomer(int customerID);
         public List<T>? GetAll();
         public void DeleteByID(int id);
 

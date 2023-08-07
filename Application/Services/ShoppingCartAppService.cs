@@ -34,17 +34,27 @@ namespace Application.Services
 
         public void DeleteProductByID(int customerID, int productID)
         {
-
+            ShoppingCart? shoppingCart = _repository.GetCurrentByCustomer(customerID);
+            if (shoppingCart  != null) 
+            {
+                _repository.DeleteProductByID(shoppingCart.ID, productID);
+            }
+            
         }
 
         public ShoppingCart? GetByID(int id)
         {
-            return null;
+            return _repository.GetByID(id);
         }
 
-        public ShoppingCart? GetByCustomer(int customerID)
+        public ShoppingCart? GetCurrentByCustomer(int customerID)
         {
-            return null;
+            return _repository.GetCurrentByCustomer(customerID);
+        }
+
+        public List<ShoppingCart>? GetByCustomer(int customerID)
+        {
+            return _repository.GetByCustomer(customerID);
         }
 
         public List<ShoppingCart>? GetAll()

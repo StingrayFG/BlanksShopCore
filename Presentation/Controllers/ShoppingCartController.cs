@@ -46,9 +46,16 @@ namespace Presentation.Controllers
 
         [HttpGet]
         [Route("get/bycustomer")]
-        public ShoppingCart? GetByCustomer(int customerID)
+        public List<ShoppingCart>? GetByCustomer(int customerID)
         {
             return _service.GetByCustomer(customerID);
+        }
+
+        [HttpGet]
+        [Route("get/currentbycustomer")]
+        public ShoppingCart? GetCurrentByCustomer(int customerID)
+        {
+            return _service.GetCurrentByCustomer(customerID);
         }
 
         [HttpGet]

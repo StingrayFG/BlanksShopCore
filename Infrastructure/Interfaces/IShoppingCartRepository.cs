@@ -15,7 +15,8 @@ namespace Infrastructure.Interfaces
         public void DeleteProductByID(int shoppingCartID, int productID);
 
         public T? GetByID(int id);
-        public List<T>? GetByCustomer(int id);
+        public T? GetCurrentByCustomer(int customerID);
+        public List<T>? GetByCustomer(int customerID);
         public List<T>? GetAll();
         public void DeleteByID(int id);
 
