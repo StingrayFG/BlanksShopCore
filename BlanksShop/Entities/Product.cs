@@ -44,5 +44,10 @@ namespace Domain.Entities
             Name = name;
         }
 
+        public void UpdateCount(int count)
+        {
+            Count = count;
+        }
+
     }
 }
