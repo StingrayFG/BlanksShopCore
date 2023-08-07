@@ -12,59 +12,59 @@ namespace Application.Services
 {
     public class ShoppingCartAppService : IShoppingCartAppService<ShoppingCart>
     {
-        protected IShoppingCartRepository<ShoppingCart> _repository;
+        protected IShoppingCartRepository<ShoppingCart> _shoppingCartRepository;
         protected IRepository<MetalBlank> _blanksRepository;
 
         public ShoppingCartAppService()
         {
-            _repository = new ShoppingCartRepository();
+            _shoppingCartRepository = new ShoppingCartRepository();
             _blanksRepository = new Repository<MetalBlank>();
         }
 
         public ShoppingCartAppService(ShoppingCartRepository repository, IRepository<MetalBlank> blanksRepository)
         {
-            _repository = repository;
+            _shoppingCartRepository = repository;
             _blanksRepository = blanksRepository;
         }
 
         public void AddProduct(int customerID, int productID)
         {
-            _repository.Add(customerID, productID);
+            _shoppingCartRepository.Add(customerID, productID);
         }
 
         public void DeleteProductByID(int customerID, int productID)
         {
-            ShoppingCart? shoppingCart = _repository.GetCurrentByCustomer(customerID);
+            ShoppingCart? shoppingCart = _shoppingCartRepository.GetCurrentByCustomer(customerID);
             if (shoppingCart  != null) 
             {
-                _repository.DeleteProductByID(shoppingCart.ID, productID);
+                _shoppingCartRepository.DeleteProductByID(shoppingCart.ID, productID);
             }
             
         }
 
         public ShoppingCart? GetByID(int id)
         {
-            return _repository.GetByID(id);
+            return _shoppingCartRepository.GetByID(id);
         }
 
         public ShoppingCart? GetCurrentByCustomer(int customerID)
         {
-            return _repository.GetCurrentByCustomer(customerID);
+            return _shoppingCartRepository.GetCurrentByCustomer(customerID);
         }
 
         public List<ShoppingCart>? GetByCustomer(int customerID)
         {
-            return _repository.GetByCustomer(customerID);
+            return _shoppingCartRepository.GetByCustomer(customerID);
         }
 
         public List<ShoppingCart>? GetAll()
         {
-            return _repository.GetAll();
+            return _shoppingCartRepository.GetAll();
         }
 
         public void DeleteByID(int id)
         {
-            _repository.DeleteByID(id);
+            _shoppingCartRepository.DeleteByID(id);
         }
     }
 }
