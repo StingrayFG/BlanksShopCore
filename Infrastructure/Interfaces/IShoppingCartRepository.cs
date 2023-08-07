@@ -9,13 +9,14 @@ using Domain.Entities;
 
 namespace Infrastructure.Interfaces
 {
-    public interface IShoppingCartRepository<T> where T : ShoppingCart
+    public interface IShoppingCartRepository<T>
     {
-        public T? GetByID(int id);
-
-        public T? GetByCustomer(int id);
-        public List<T>? GetAll();
         public void Add(int customerID, int productID);
+        public void DeleteProductByID(int shoppingCartID, int productID);
+
+        public T? GetByID(int id);
+        public List<T>? GetByCustomer(int id);
+        public List<T>? GetAll();
         public void DeleteByID(int id);
 
     }
