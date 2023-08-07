@@ -40,8 +40,14 @@ namespace Infrastructure.Repositories
             if (metalBlankEF != null)
             {
                 Material? material = _materialRepository.GetByID(metalBlankEF.MaterialID);
-                MetalBlank metalBlank = metalBlankEF.Convert();
-                metalBlank.UpdateMaterial(material);
+                MetalBlank metalBlank = new MetalBlank();
+                if (material != null)
+                {
+                    metalBlank.UpdateMaterial(material);
+                }
+
+                metalBlankEF.Convert(metalBlank);
+
                 return metalBlank;
             }
             else
