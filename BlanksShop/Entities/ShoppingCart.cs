@@ -12,7 +12,8 @@ namespace Domain.Entities
         public int CustomerID { get; set; }
         public int? OrderID { get; set; }
 
-        public List<Product>? Products { get; set; }
+        public List<Product>? Products { get; set; } = new List<Product>();
+
         public ShoppingCart()
         {
  
@@ -37,7 +38,7 @@ namespace Domain.Entities
             {
                 foreach (Product p in Products)
                 {
-                    Price += p.Price;
+                    Price += p.Price * p.Count;
                 }
             }
         }
