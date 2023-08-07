@@ -59,8 +59,14 @@ namespace Infrastructure.Repositories
                 foreach (MetalBlankEF metalBlankEF in metalBlanksEF)
                 {
                     Material? material = _materialRepository.GetByID(metalBlankEF.MaterialID);
-                    MetalBlank metalBlank = metalBlankEF.Convert();
-                    metalBlank.UpdateMaterial(material);
+                    MetalBlank metalBlank = new MetalBlank();
+                    if(material != null)
+                    {
+                        metalBlank.UpdateMaterial(material);
+                    }
+
+                    metalBlankEF.Convert(metalBlank);
+                    
                     res.Add(metalBlank);
                 }
                 return res;

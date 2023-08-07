@@ -38,20 +38,14 @@ namespace Infrastructure.EntitiesEF
             Count = metalBlank.Count;
         }
 
-        public MetalBlank Convert()
+        public void Convert(MetalBlank metalBlank)
         {
-            MetalBlank metalBlank = new MetalBlank
-            {
-                ID = this.ID,
-                Name = this.Name,
-                Dimensions = new Dimensions(Width, Height, Length),
-                Weight = this.Weight,
-                Price = this.Price,
-                Count = this.Count,
-            };
-
-            return metalBlank;
+            metalBlank.ID = this.ID;
+            metalBlank.Name = this.Name;
+            metalBlank.Dimensions = new Dimensions(Width, Height, Length);
+            metalBlank.Weight = this.Weight;
+            metalBlank.Price = this.Price;
+            metalBlank.Count = this.Count;
         }
-
     }
 }
