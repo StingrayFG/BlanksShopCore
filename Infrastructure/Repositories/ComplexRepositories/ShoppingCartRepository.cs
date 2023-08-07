@@ -8,82 +8,36 @@ using System.Text;
 using System.Threading.Tasks;
 using Infrastructure.EntitiesEF;
 using System.Security;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories
 {
-    public class ShoppingCartRepository : IShoppingCartRepository<ShoppingCart>
+    public class ShoppingCartRepository: IShoppingCartRepository<ShoppingCart> 
     {
-        private IRepository<ShoppingCartEF> _shoppingCartRepository;
-        private IRepository<MetalBlankEF> _metalBlankRepository;   
 
+        private IRepository<ShoppingCartEF> _shoppingCartRepository;
+        private IMetalBlankRepository<MetalBlank> _metalBlankRepository;
 
         public ShoppingCartRepository()
         {
             _shoppingCartRepository = new Repository<ShoppingCartEF>();
-            _metalBlankRepository = new Repository<MetalBlankEF>();
+            _metalBlankRepository = new MetalBlankRepository();
         }
 
-        public ShoppingCartRepository(IRepository<ShoppingCartEF> shoppingCartRepository, IRepository<MetalBlankEF> metalBlankRepository)
+        public ShoppingCartRepository(IRepository<ShoppingCartEF> shoppingCartRepository, IMetalBlankRepository<MetalBlank> metalBlankRepository)
         {
             _shoppingCartRepository = shoppingCartRepository;
-            _metalBlankRepository = metalBlankRepository;       
-        }
-        
-        public ShoppingCart GetByID(int id) 
-        {
-            List<ShoppingCart>? shoppingCarts = GetAll();
-            ShoppingCart? res = (from r in shoppingCarts where (r.ID == id) select r).First();
-            return res;
+            _metalBlankRepository = metalBlankRepository;
         }
 
-        public ShoppingCart GetByCustomer(int id)
+        public void Add(int shoppingCartID, int customerID, int productID)
         {
-            List<ShoppingCart>? shoppingCarts = GetAll();
-            ShoppingCart? res = (from r in shoppingCarts where ((r.CustomerID == id) && (r.OrderID == null)) select r).First();
-            return res;
-        }
-
-        public List<ShoppingCart>? GetAll()
-        {
-            List<ShoppingCartEF>? shoppingCartsEF = _shoppingCartRepository.GetAll();
-            List<ShoppingCart> res = new List<ShoppingCart>();
-            if (shoppingCartsEF != null) 
-            { 
-                int? currentCustomerID = 0;
-                int? currentOrderID = 0;
-
-                foreach (ShoppingCartEF shoppingCartEF in shoppingCartsEF)
-                {
-                    ShoppingCart currentCart = new ShoppingCart();
-                    if ((shoppingCartEF.CustomerID == currentCustomerID) && (shoppingCartEF.OrderID == currentOrderID))
-                    {
-                        MetalBlank? currentProduct = _metalBlankRepository.GetByID(shoppingCartEF.ProductID);
-                        if (currentProduct != null) 
-                        {
-                            currentCart.AddProduct(currentProduct);
-                        }                   
-                    }
-                    else
-                    {
-                        currentCustomerID = shoppingCartEF.CustomerID;
-                        currentOrderID = shoppingCartEF.OrderID;
-                        currentCart = shoppingCartEF.Convert();
-                        res.Add(currentCart);
-                        currentCart = new ShoppingCart();
-                    }
-                }
-            }
-            return res;
-        }
-
-        public void Add(int customerID, int productID)
-        {
-            ShoppingCart shoppingCart = GetByCustomer(customerID);
-            MetalBlank metalBlank = _metalBlankRepository.GetByID(productID); 
-            if (metalBlank != null) 
+            MetalBlank? metalBlank = _metalBlankRepository.GetByID(productID);
+            if (metalBlank != null)
             {
                 _shoppingCartRepository.Add(new ShoppingCartEF()
                 {
+                    ID = shoppingCartID,
                     CustomerID = customerID,
                     OrderID = null,
                     ProductID = productID,
@@ -93,19 +47,112 @@ namespace Infrastructure.Repositories
             }
         }
 
-        public void DeleteByID(int id)
+        public void DeleteProductByID(int shoppingCartID, int productID)
         {
             List<ShoppingCartEF>? shoppingCartsEF = _shoppingCartRepository.GetAll();
             if (shoppingCartsEF != null)
             {
-                foreach(ShoppingCartEF shoppingCartEF in shoppingCartsEF)
+                foreach (ShoppingCartEF shoppingCartEF in shoppingCartsEF)
                 {
-                    if (shoppingCartEF.ID == id) 
+                    if ((shoppingCartEF.ID == shoppingCartID) && (shoppingCartEF.ProductID == productID))
                     {
                         _shoppingCartRepository.Delete(shoppingCartEF);
                     }
                 }
             }
         }
+
+
+        public void UpdateOrder(int shoppingCartID, int orderID)
+        {
+            List<ShoppingCartEF>? shoppingCartsEF = (from r in _shoppingCartRepository.GetAll() where (r.ID == shoppingCartID) select r).ToList();
+            if (shoppingCartsEF != null) 
+            {
+                foreach (ShoppingCartEF shoppingCartEF in shoppingCartsEF)
+                {
+                    shoppingCartEF.OrderID = orderID;   
+                    _shoppingCartRepository.Update(shoppingCartEF);
+                }
+            }
+        }
+
+        public ShoppingCart? GetByID(int id)
+        {
+            List<ShoppingCart>? shoppingCarts = GetAll();
+            ShoppingCart? res = (from r in shoppingCarts where (r.ID == id) select r).First();
+            return res;
+        }
+
+        public ShoppingCart? GetCurrentByCustomer(int customerID)
+        {
+            List<ShoppingCart>? shoppingCarts = GetAll();
+            ShoppingCart? res = (from r in shoppingCarts where ((r.CustomerID == customerID) && (r.OrderID == null)) select r).Last();
+            return res;
+        }
+
+        public List<ShoppingCart>? GetByCustomer(int customerID)
+        {
+            List<ShoppingCart>? shoppingCarts = GetAll();
+            List<ShoppingCart>? res = (from r in shoppingCarts where ((r.CustomerID == customerID)) select r).ToList();
+            return res;
+        }
+
+        public List<ShoppingCart>? GetAll()
+        {
+            List<ShoppingCartEF>? shoppingCartsEF = _shoppingCartRepository.GetAll();
+            List<ShoppingCart> res = new List<ShoppingCart>();
+
+            if (shoppingCartsEF != null)
+            {
+                int? currentID = shoppingCartsEF.First().ID;
+                ShoppingCart currentCart = new ShoppingCart();
+
+                foreach (ShoppingCartEF shoppingCartEF in shoppingCartsEF)
+                {           
+                    
+                    if (shoppingCartEF.ID != currentID)
+                    {                    
+                        res.Add(currentCart);
+
+                        currentCart = new ShoppingCart();
+
+                        currentID = shoppingCartEF.ID;
+                    }
+                    
+                    if (shoppingCartEF.ID == currentID)
+                    {
+                        shoppingCartEF.Convert(currentCart);
+
+                        MetalBlank? currentProduct = _metalBlankRepository.GetByID(shoppingCartEF.ProductID);
+                        if (currentProduct != null)
+                        {
+                            currentProduct.UpdateCount(shoppingCartEF.Count);
+                            currentCart.AddProduct(currentProduct);
+                        }                       
+                    }
+
+                    
+                }
+
+                res.Add(currentCart);
+            }
+            return res;
+        }
+
+        public void DeleteByID(int id)
+        {
+            List<ShoppingCartEF>? shoppingCartsEF = _shoppingCartRepository.GetAll();
+            if (shoppingCartsEF != null)
+            {
+                foreach (ShoppingCartEF shoppingCartEF in shoppingCartsEF)
+                {
+                    if (shoppingCartEF.ID == id)
+                    {
+                        _shoppingCartRepository.Delete(shoppingCartEF);
+                    }
+                }
+            }
+        }
+
     }
 }
