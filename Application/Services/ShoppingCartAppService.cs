@@ -29,13 +29,19 @@ namespace Application.Services
 
         public void AddProduct(int customerID, int productID)
         {
-            _shoppingCartRepository.Add(customerID, productID);
+            int? shoppingCartID = _shoppingCartRepository.GetCurrentByCustomer(customerID).ID;
+            if (shoppingCartID == null)
+            {
+                shoppingCartID = _shoppingCartRepository.GetLastID();
+            }
+
+            _shoppingCartRepository.Add((int)shoppingCartID, customerID, productID);
         }
 
         public void DeleteProductByID(int customerID, int productID)
         {
             ShoppingCart? shoppingCart = _shoppingCartRepository.GetCurrentByCustomer(customerID);
-            if (shoppingCart  != null) 
+            if (shoppingCart != null) 
             {
                 _shoppingCartRepository.DeleteProductByID(shoppingCart.ID, productID);
             }

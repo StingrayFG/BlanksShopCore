@@ -11,7 +11,7 @@ namespace Application.Interfaces
 {
     public interface IShoppingCartAppService<T>
     {
-        public void AddProduct(int shoppingCartID, int customerID, int productID);
+        public void AddProduct(int customerID, int productID);
         public void DeleteProductByID(int customerID, int productID);
 
         public T? GetByID(int id);

@@ -76,6 +76,11 @@ namespace Infrastructure.Repositories
             }
         }
 
+        public int GetLastID()
+        {
+            return _shoppingCartRepository.GetLastID();
+        }
+
         public ShoppingCart? GetByID(int id)
         {
             List<ShoppingCart>? shoppingCarts = GetAll();
