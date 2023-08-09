@@ -37,5 +37,10 @@ namespace Domain.Entities
             Price = ShoppingCart.Price;
         }
 
+        public void UpdatePayment(string payment)
+        {
+            PaymentMethod = payment;
+        }
+
     }
 }
