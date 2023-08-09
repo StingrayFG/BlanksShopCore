@@ -33,7 +33,6 @@ namespace Presentation
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddSingleton<CustomerController>();
             services.AddTransient<ICustomerAppService, CustomerAppService>();
             services.AddTransient<IRepository<Customer>, Repository<Customer>>();
             services.AddTransient<IMaterialAppService, MaterialAppService>();
@@ -43,6 +42,9 @@ namespace Presentation
             services.AddTransient<IMetalBlankRepository<MetalBlank>, MetalBlankRepository>();
             services.AddTransient<IShoppingCartAppService<ShoppingCart>, ShoppingCartAppService>();
             services.AddTransient<IShoppingCartRepository<ShoppingCart>, ShoppingCartRepository>();
+            services.AddTransient<IOrderAppService<Order>, OrderAppService>();
+            services.AddTransient<IOrderRepository<Order>, OrderRepository>();
+
 
             services.AddCors(options =>
             {
