@@ -15,13 +15,10 @@ namespace Infrastructure
     public class ApplicationContext : DbContext
     {
         public DbSet<Customer> Customers { get; set; }
-        
         public DbSet<Material> Materials { get; set; }
         public DbSet<MetalBlankEF> MetalBlanks { get; set; }
-
         public DbSet<ShoppingCartEF> ShoppingCarts { get; set; }
-
-        //public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderEF> Orders { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
