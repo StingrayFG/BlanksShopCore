@@ -11,7 +11,6 @@ namespace Infrastructure.EntitiesEF
 {
     public class OrderEF: EntityBase
     {
-        public int ID { get; set; }
         public DateTime OrderCreationDate { get; set; }
         public decimal? Price { get; set; }
         public string? PaymentMethod { get; set; }
