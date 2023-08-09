@@ -12,6 +12,8 @@ namespace Domain.Entities
         public string PhoneNumber { get; set; }
         public string Password { get; set; }
 
+        public Customer() { }
+
         public Customer(int id, string name, string phoneNumber, string password)
         {
             ID = id;
