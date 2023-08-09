@@ -20,5 +20,11 @@ namespace Domain.Entities
             Height = height;
             Length = length;
         }
+
+        public double CalcVolume()
+        { 
+            return Width * Height * Length; 
+        }
+
     }
 }
