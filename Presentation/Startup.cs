@@ -61,7 +61,6 @@ namespace Presentation
                 options.SwaggerDoc("customers", new OpenApiInfo { Title = "customers", Version = "v1" });
                 options.SwaggerDoc("orders", new OpenApiInfo { Title = "orders", Version = "v1" });
                 options.SwaggerDoc("shoppingcarts", new OpenApiInfo { Title = "shoppingcarts", Version = "v1" });
-                options.SwaggerDoc("parts", new OpenApiInfo { Title = "parts", Version = "v1" });
                 options.SwaggerDoc("metalblanks", new OpenApiInfo { Title = "metalblanks", Version = "v1" });
                 options.SwaggerDoc("materials", new OpenApiInfo { Title = "materials", Version = "v1" });
             });
