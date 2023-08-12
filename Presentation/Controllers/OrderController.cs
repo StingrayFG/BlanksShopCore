@@ -24,9 +24,9 @@ namespace Presentation.Controllers
 
         [HttpPost]
         [Route("add")]
-        public void Add(int customerID)
+        public void Add(int customerID, string paymentMethod)
         {
-            _service.Add(customerID);
+            _service.Add(customerID, paymentMethod);
         }
 
         [HttpPut]

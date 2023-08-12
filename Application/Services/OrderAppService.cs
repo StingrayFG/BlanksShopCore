@@ -27,12 +27,12 @@ namespace Application.Services
             _shoppingCartRepository = shoppingCartRepository;
         }
 
-        public void Add(int customerID)
+        public void Add(int customerID, string paymentMethod)
         {
             ShoppingCart? shoppingCart = _shoppingCartRepository.GetCurrentByCustomer(customerID);
             if (shoppingCart != null)
             {
-                Order res = new Order(_orderRepository.GetLastID() + 1, customerID, shoppingCart);
+                Order res = new Order(_orderRepository.GetLastID() + 1, customerID, shoppingCart, paymentMethod);
                 _orderRepository.Add(res);
             }       
         }

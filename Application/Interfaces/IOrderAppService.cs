@@ -11,7 +11,7 @@ namespace Application.Interfaces
 {
     public interface IOrderAppService<T>
     {
-        public void Add(int customerID);
+        public void Add(int customerID, string paymentMethod);
         public T? GetByID(int id);
         public List<T>? GetAll();
         public void UpdatePayment(int id, string payment);

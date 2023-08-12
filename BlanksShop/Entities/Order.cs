@@ -20,21 +20,23 @@ namespace Domain.Entities
 
         }
 
-        public Order(int id, int customerID, ShoppingCart shoppingCart)
+        public Order(int id, int customerID, ShoppingCart shoppingCart, string paymentMethod)
         {
             ID = id;
             CustomerID = customerID;
             ShoppingCart = shoppingCart;
+            PaymentMethod = paymentMethod;
             OrderCreationDate = DateTime.Now;
 
             CalcPrice();
         }
 
-        public Order(int customerID, ShoppingCart shoppingCart)
+        public Order(int customerID, ShoppingCart shoppingCart, string paymentMethod)
         {
             ID = 0;
             CustomerID = customerID;
             ShoppingCart = shoppingCart;
+            PaymentMethod = paymentMethod;
             OrderCreationDate = DateTime.Now;
 
             CalcPrice();
