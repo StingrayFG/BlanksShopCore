@@ -76,12 +76,10 @@ namespace Presentation
                 app.UseSwaggerUI(options =>
                 {
                     options.SwaggerEndpoint("/swagger/customers/swagger.json", "customers");
-                    options.SwaggerEndpoint("/swagger/orders/swagger.json", "orders");
-                    options.SwaggerEndpoint("/swagger/shoppingcarts/swagger.json", "shoppingcarts");
-
-                    options.SwaggerEndpoint("/swagger/parts/swagger.json", "parts");
                     options.SwaggerEndpoint("/swagger/metalblanks/swagger.json", "metalblanks");
                     options.SwaggerEndpoint("/swagger/materials/swagger.json", "materials");
+                    options.SwaggerEndpoint("/swagger/orders/swagger.json", "orders");
+                    options.SwaggerEndpoint("/swagger/shoppingcarts/swagger.json", "shoppingcarts");
                 });
             }
 
