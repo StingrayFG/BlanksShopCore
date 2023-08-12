@@ -14,7 +14,7 @@ namespace Infrastructure.Interfaces
         public T? GetByID(int id);
         public int GetLastID();
         public List<T>? GetAll();
-        public List<T> GetByQuery(Expression<Func<T, bool>> predicate);
+        public List<T>? GetByQuery(Expression<Func<T, bool>> predicate);
         public void Add(T entity);
         public void Update(T entity);
         public void Delete(T entity);

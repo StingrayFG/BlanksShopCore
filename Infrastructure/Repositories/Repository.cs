@@ -39,12 +39,12 @@ namespace Infrastructure.Repositories
             return _dbContext.Set<T>().Find(id);
         }
 
-        public virtual List<T> GetAll()
+        public virtual List<T>? GetAll()
         {
             return _dbContext.Set<T>().ToList();
         }
 
-        public virtual List<T> GetByQuery(System.Linq.Expressions.Expression<Func<T, bool>> predicate)
+        public virtual List<T>? GetByQuery(System.Linq.Expressions.Expression<Func<T, bool>> predicate)
         {
             return _dbContext.Set<T>()
                    .Where(predicate)
@@ -71,8 +71,12 @@ namespace Infrastructure.Repositories
 
         public void DeleteByID(int id)
         {
-            _dbContext.Set<T>().Remove((from e in _dbContext.Set<T>() where e.ID == id select e).First());
-            _dbContext.SaveChanges();
+            T? entity = _dbContext.Set<T>().Find(id);
+            if (entity != null)
+            {
+                _dbContext.Set<T>().Remove(entity);
+                _dbContext.SaveChanges();
+            }
         }
 
     }
