@@ -28,6 +28,11 @@ namespace Infrastructure.Repositories
             _shoppingCartRepository = shoppingCartRepository;
         }
 
+        public int GetLastID()
+        {
+            return _orderRepository.GetLastID();
+        }
+
         public Order? GetByID(int id)
         {
             OrderEF? order = _orderRepository.GetByID(id);
