@@ -15,7 +15,8 @@ namespace Infrastructure.Repositories
     {
         public Customer? GetByLogin(string login, string password)
         {
-            return (from e in _dbContext.Set<Customer>() where (e.PhoneNumber == login) && (e.Password == password) select e).First();
+            Customer? res = (from e in _dbContext.Set<Customer>() where (e.PhoneNumber == login) && (e.Password == password) select e).FirstOrDefault();
+            return res;
         }
 
     }
