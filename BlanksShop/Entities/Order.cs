@@ -25,6 +25,7 @@ namespace Domain.Entities
             ID = id;
             CustomerID = customerID;
             ShoppingCart = shoppingCart;
+            OrderCreationDate = DateTime.Now;
 
             CalcPrice();
         }
@@ -34,6 +35,7 @@ namespace Domain.Entities
             ID = 0;
             CustomerID = customerID;
             ShoppingCart = shoppingCart;
+            OrderCreationDate = DateTime.Now;
 
             CalcPrice();
         }
