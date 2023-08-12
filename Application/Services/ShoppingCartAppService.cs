@@ -32,10 +32,8 @@ namespace Application.Services
             int? shoppingCartID = _shoppingCartRepository.GetCurrentByCustomer(customerID).ID;
             if (shoppingCartID == null)
             {
-                shoppingCartID = _shoppingCartRepository.GetLastID();
+                _shoppingCartRepository.Add(_shoppingCartRepository.GetLastID() + 1, customerID, productID);
             }
-
-            _shoppingCartRepository.Add((int)shoppingCartID, customerID, productID);
         }
 
         public void DeleteProductByID(int customerID, int productID)

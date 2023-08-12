@@ -21,7 +21,7 @@ namespace Application.Services
 
         public void Add(string name, double density, decimal pricePerKilogram)
         {
-            Material res = new Material(_repository.GetLastID(), name, density, pricePerKilogram);
+            Material res = new Material(_repository.GetLastID() + 1, name, density, pricePerKilogram);
             _repository.Add(res);
         }
 
