@@ -50,6 +50,13 @@ namespace Presentation.Controllers
             return _service.GetByID(id);
         }
 
+        [HttpGet]
+        [Route("get/bylogin")]
+        public Customer? GetByLogin(string login, string password)
+        {
+            return _service.GetByLogin(login, password);
+        }
+
         [HttpDelete]
         [Route("delete/byid")]
         public void DeleteByID(int id)

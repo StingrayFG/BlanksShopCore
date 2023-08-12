@@ -13,6 +13,7 @@ namespace Application.Interfaces
     {
         public void Add(string name, string phoneNumber, string password);
         public void UpdateName(int id, string name);
+        public Customer? GetByLogin(string login, string password);
         
     }
 }

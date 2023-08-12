@@ -10,13 +10,23 @@ using Infrastructure.Repositories;
 
 namespace Application.Services
 {
-    public class CustomerAppService: AppService<Customer>, ICustomerAppService
+    public class CustomerAppService: ICustomerAppService
     {
-        public CustomerAppService() { }
+        protected ICustomerRepository<Customer> _repository;
 
-        public CustomerAppService(IRepository<Customer> repository): base(repository)
+        public CustomerAppService()
         {
-            
+            _repository = new CustomerRepository();
+        }
+
+        public CustomerAppService(ICustomerRepository<Customer> repository)
+        {
+            _repository = repository;
+        }
+
+        public virtual void SetRepository(ICustomerRepository<Customer> repository)
+        {
+            _repository = repository;
         }
 
         public void Add(string name, string phoneNumber, string password)
@@ -36,7 +46,25 @@ namespace Application.Services
             
         }
 
-        
+        public Customer? GetByLogin(string login, string password)
+        {
+            return _repository.GetByLogin(login, password);
+        }
+
+        public virtual Customer? GetByID(int id)
+        {
+            return _repository.GetByID(id);
+        }
+
+        public virtual List<Customer>? GetAll()
+        {
+            return _repository.GetAll();
+        }
+
+        public virtual void DeleteByID(int id)
+        {
+            _repository.DeleteByID(id);
+        }
 
     }
 }
