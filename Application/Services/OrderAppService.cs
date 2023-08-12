@@ -32,7 +32,7 @@ namespace Application.Services
             ShoppingCart? shoppingCart = _shoppingCartRepository.GetCurrentByCustomer(customerID);
             if (shoppingCart != null)
             {
-                Order res = new Order(customerID, shoppingCart);
+                Order res = new Order(_orderRepository.GetLastID() + 1, customerID, shoppingCart);
                 _orderRepository.Add(res);
             }       
         }
