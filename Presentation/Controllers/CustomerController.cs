@@ -11,8 +11,8 @@ using Domain.Entities;
 namespace Presentation.Controllers
 {
     [ApiController]
-    [Route("customers")]
-    [ApiExplorerSettings(GroupName = "customers")]
+    [Route("customer")]
+    [ApiExplorerSettings(GroupName = "customer")]
     public class CustomerController : Controller
     {
         public readonly ICustomerAppService _service;

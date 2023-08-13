@@ -12,8 +12,8 @@ using System.Numerics;
 namespace Presentation.Controllers
 {
     [ApiController]
-    [Route("shoppingcarts")]
-    [ApiExplorerSettings(GroupName = "shoppingcarts")]
+    [Route("shoppingcart")]
+    [ApiExplorerSettings(GroupName = "shoppingcart")]
     public class ShoppingCartController : Controller
     {
         public readonly IShoppingCartAppService<ShoppingCart> _service;

@@ -11,8 +11,8 @@ using Domain.Entities;
 namespace Presentation.Controllers
 {
     [ApiController]
-    [Route("materials")]
-    [ApiExplorerSettings(GroupName = "materials")]
+    [Route("material")]
+    [ApiExplorerSettings(GroupName = "material")]
     public class MaterialController : Controller
     {
         public readonly IMaterialAppService _service;

@@ -12,8 +12,8 @@ using System.Numerics;
 namespace Presentation.Controllers
 {
     [ApiController]
-    [Route("metalblanks")]
-    [ApiExplorerSettings(GroupName = "metalblanks")]
+    [Route("metalblank")]
+    [ApiExplorerSettings(GroupName = "metalblank")]
     public class MetalBlankController : Controller
     {
         public readonly IMetalBlankAppService<MetalBlank> _service;

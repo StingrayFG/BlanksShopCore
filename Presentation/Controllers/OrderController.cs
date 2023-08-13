@@ -11,8 +11,8 @@ using Domain.Entities;
 namespace Presentation.Controllers
 {
     [ApiController]
-    [Route("orders")]
-    [ApiExplorerSettings(GroupName = "orders")]
+    [Route("order")]
+    [ApiExplorerSettings(GroupName = "order")]
     public class OrderController : Controller
     {
         public readonly IOrderAppService<Order> _service;
