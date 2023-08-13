@@ -9,12 +9,20 @@ namespace Application.EntitiesUI
 {
     public class ProductCard
     {
+        public int ID { get; private set; }
         public string Name { get; private set; }
         public string MaterialName { get; private set; }
         public List<Product> Products { get; private set; } = new List<Product>();
 
         public ProductCard(string name, string materialName)
         {
+            Name = name;
+            MaterialName = materialName;
+        }
+
+        public ProductCard(int id, string name, string materialName)
+        {
+            ID = id;
             Name = name;
             MaterialName = materialName;
         }

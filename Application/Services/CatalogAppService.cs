@@ -29,7 +29,7 @@ namespace Application.Services
 
             if (metalBlanks != null)
             {
-
+                int lastUsedID = 0;
                 foreach (MetalBlank metalBlank in metalBlanks)
                 {
                     ProductCard? productCard = res.Where(e => e.MaterialName == metalBlank.Material.Name && e.Name == metalBlank.Name).FirstOrDefault();
@@ -39,7 +39,8 @@ namespace Application.Services
                     }
                     else
                     {
-                        ProductCard newProductCard = new ProductCard(metalBlank.Name, metalBlank.Material.Name);
+                        lastUsedID++;
+                        ProductCard newProductCard = new ProductCard(lastUsedID, metalBlank.Name, metalBlank.Material.Name);
                         newProductCard.AddProduct(metalBlank);
                         res.Add(newProductCard);
                     }
