@@ -8,9 +8,9 @@ namespace Domain.Entities
 {
     public class Dimensions
     {
-        public double Width { get; set; }
-        public double Height { get; set; }
-        public double Length { get; set; }
+        public double Width { get; private set; }
+        public double Height { get; private set; }
+        public double Length { get; private set; }
 
         public Dimensions() { }
 

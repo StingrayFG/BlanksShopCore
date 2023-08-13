@@ -8,9 +8,9 @@ namespace Domain.Entities
 {
     public class Material: EntityBase
     {
-        public string Name { get; set; }
-        public double Density { get; set; }
-        public decimal? PricePerKilogram { get; set; }
+        public string Name { get; private set; }
+        public double Density { get; private set; }
+        public decimal? PricePerKilogram { get; private set; }
 
         public Material() { }
 
