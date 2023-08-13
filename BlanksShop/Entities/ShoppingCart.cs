@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class ShoppingCart: EntityBase
+    public class ShoppingCart : EntityBase
     {
-        public decimal? Price { get; set; }
-        public int CustomerID { get; set; }
-        public int? OrderID { get; set; }
+        public decimal? Price { get; private set; }
+        public int CustomerID { get; private set; }
+        public int? OrderID { get; private set; }
 
         public List<Product>? Products { get; set; } = new List<Product>();
 
         public ShoppingCart()
         {
- 
+
         }
 
         public ShoppingCart(int id, int customerID)
@@ -29,6 +29,14 @@ namespace Domain.Entities
         {
             ID = 0;
             CustomerID = customerID;
+        }
+
+        public void SetProperties(int id, decimal? price,  int customerID, int? orderID)
+        {
+            ID = id;
+            Price = price;
+            CustomerID = customerID;
+            OrderID = orderID;
         }
 
         public void RecalcPrice()

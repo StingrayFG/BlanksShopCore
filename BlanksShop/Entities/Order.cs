@@ -9,11 +9,11 @@ namespace Domain.Entities
 {
     public class Order: EntityBase
     {
-        public DateTime OrderCreationDate { get; set; }
-        public decimal? Price { get; set; }
-        public string? PaymentMethod { get; set; }
-        public int CustomerID { get; set; }
-        public ShoppingCart ShoppingCart { get; set; }
+        public DateTime OrderCreationDate { get; private set; }
+        public decimal? Price { get; private set; }
+        public string? PaymentMethod { get; private set; }
+        public int CustomerID { get; private set; }
+        public ShoppingCart ShoppingCart { get; private set; }
 
         public Order()
         {
@@ -41,6 +41,16 @@ namespace Domain.Entities
 
             CalcPrice();
         }
+
+        public void SetProperties(int id, DateTime orderCreationDate, decimal? price, string? paymentMethod, int customerID)
+        { 
+            ID = id;
+            OrderCreationDate = orderCreationDate;
+            Price = price;
+            PaymentMethod = paymentMethod;
+            CustomerID = customerID;
+        }
+
         public void CalcPrice()
         {
             Price = ShoppingCart.Price;
