@@ -10,6 +10,7 @@ namespace Infrastructure.EntitiesEF
 {
     public class MetalBlankEF: EntityBase
     {
+        public int ID { get; set; }
         public string Name { get; set; }
         public double Width { get; set; }
         public double Height { get; set; }

@@ -10,6 +10,7 @@ namespace Infrastructure.EntitiesEF
 {
     public class ShoppingCartEF: EntityBase
     {
+        public int ID { get; set; }
         public int CustomerID { get; set; }
         public int? OrderID { get; set; }
         public int ProductID { get; set; }
@@ -23,9 +24,7 @@ namespace Infrastructure.EntitiesEF
 
         public void Convert(ShoppingCart shoppingCart)
         {
-            shoppingCart.ID = this.ID;
-            shoppingCart.CustomerID = this.CustomerID;
-            shoppingCart.OrderID = this.OrderID;    
+            shoppingCart.SetProperties(ID, Price, CustomerID, OrderID);
         }
     }
 }
