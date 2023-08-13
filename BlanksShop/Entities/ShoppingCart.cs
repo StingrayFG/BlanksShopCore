@@ -56,15 +56,29 @@ namespace Domain.Entities
             OrderID = orderID;
         }
 
-        public void AddProduct(Product p)
+        public void AddProduct(Product product)
         {
-            Products.Add(p);
+            bool isFound = false;
+            foreach (Product p in Products)
+            {
+                if (p.ID == product.ID)
+                {
+                    p.UpdateCount(p.Count + product.Count);
+                    isFound = true;
+                }
+            }
+
+            if (!isFound)
+            {
+                Products.Add(product);
+            }
+
             RecalcPrice();
         }
 
-        public void RemoveProduct(Product p) 
+        public void RemoveProduct(Product product) 
         {
-            Products.Remove(p);
+            Products.Remove(product);
             RecalcPrice();
         }
     }
