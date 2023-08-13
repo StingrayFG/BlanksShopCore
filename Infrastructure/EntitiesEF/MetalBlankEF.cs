@@ -40,12 +40,7 @@ namespace Infrastructure.EntitiesEF
 
         public void Convert(MetalBlank metalBlank)
         {
-            metalBlank.ID = this.ID;
-            metalBlank.Name = this.Name;
-            metalBlank.Dimensions = new Dimensions(Width, Height, Length);
-            metalBlank.Weight = this.Weight;
-            metalBlank.Price = this.Price;
-            metalBlank.Count = this.Count;
+            metalBlank.SetProperties(ID, Name, new Dimensions(Width, Height, Length), Weight, Price, Count);
         }
     }
 }

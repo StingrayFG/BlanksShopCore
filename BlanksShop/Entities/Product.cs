@@ -5,6 +5,7 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace Domain.Entities
 {
@@ -37,6 +38,16 @@ namespace Domain.Entities
             Name = name;
             Dimensions = dimensions;
             Material = material;
+        }
+
+        public void SetProperties(int id, string name, Dimensions dimensions, double? weight, decimal? price, int? count)
+        {
+            ID = id;
+            Name = name;
+            Dimensions = dimensions;
+            Weight = weight;
+            Price = price;
+            Count = count;
         }
 
         public void UpdateName(string name)
