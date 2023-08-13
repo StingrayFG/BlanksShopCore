@@ -58,11 +58,12 @@ namespace Presentation
             services.AddControllers();
             services.AddSwaggerGen(options =>
             {
-                options.SwaggerDoc("customers", new OpenApiInfo { Title = "customers", Version = "v1" });
-                options.SwaggerDoc("orders", new OpenApiInfo { Title = "orders", Version = "v1" });
-                options.SwaggerDoc("shoppingcarts", new OpenApiInfo { Title = "shoppingcarts", Version = "v1" });
-                options.SwaggerDoc("metalblanks", new OpenApiInfo { Title = "metalblanks", Version = "v1" });
-                options.SwaggerDoc("materials", new OpenApiInfo { Title = "materials", Version = "v1" });
+                options.SwaggerDoc("customer", new OpenApiInfo { Title = "customer", Version = "v1" });
+                options.SwaggerDoc("order", new OpenApiInfo { Title = "order", Version = "v1" });
+                options.SwaggerDoc("shoppingcart", new OpenApiInfo { Title = "shoppingcart", Version = "v1" });
+                options.SwaggerDoc("metalblank", new OpenApiInfo { Title = "metalblank", Version = "v1" });
+                options.SwaggerDoc("material", new OpenApiInfo { Title = "material", Version = "v1" });
+                options.SwaggerDoc("catalog", new OpenApiInfo { Title = "catalog", Version = "v1" });
             });
         }
 
@@ -75,11 +76,12 @@ namespace Presentation
                 app.UseSwagger();
                 app.UseSwaggerUI(options =>
                 {
-                    options.SwaggerEndpoint("/swagger/customers/swagger.json", "customers");
-                    options.SwaggerEndpoint("/swagger/metalblanks/swagger.json", "metalblanks");
-                    options.SwaggerEndpoint("/swagger/materials/swagger.json", "materials");
-                    options.SwaggerEndpoint("/swagger/orders/swagger.json", "orders");
-                    options.SwaggerEndpoint("/swagger/shoppingcarts/swagger.json", "shoppingcarts");
+                    options.SwaggerEndpoint("/swagger/customer/swagger.json", "customer");
+                    options.SwaggerEndpoint("/swagger/metalblank/swagger.json", "metalblank");
+                    options.SwaggerEndpoint("/swagger/material/swagger.json", "material");
+                    options.SwaggerEndpoint("/swagger/order/swagger.json", "order");
+                    options.SwaggerEndpoint("/swagger/shoppingcart/swagger.json", "shoppingcart");
+                    options.SwaggerEndpoint("/swagger/catalog/swagger.json", "catalog");
                 });
             }
 
