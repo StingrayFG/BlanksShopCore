@@ -16,7 +16,6 @@ namespace Infrastructure.Interfaces
         public T? GetByID(int id);
         public List<T>? GetAll();
         public void Update(T entity);
-        public void Delete(T entity);
         public void DeleteByID(int id);
 
     }

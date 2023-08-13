@@ -90,14 +90,13 @@ namespace Infrastructure.Repositories
 
         public void Update(MetalBlank metalBlank)
         {
-            MetalBlankEF metalBlankEF = new MetalBlankEF(metalBlank);
-            _metalBlankRepository.Update(metalBlankEF);
-        }
+            MetalBlankEF? metalBlankEF = _metalBlankRepository.GetByID(metalBlank.ID);
+            if (metalBlankEF != null)
+            {
+                metalBlankEF = new MetalBlankEF(metalBlank);
+                _metalBlankRepository.Update(metalBlankEF);
+            }
 
-        public void Delete(MetalBlank metalBlank)
-        {
-            MetalBlankEF metalBlankEF = new MetalBlankEF(metalBlank);
-            _metalBlankRepository.Delete(metalBlankEF);
         }
 
         public void DeleteByID(int id)
