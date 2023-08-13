@@ -18,6 +18,7 @@ using Presentation.Controllers;
 using Infrastructure.Interfaces;
 using Infrastructure.Repositories;
 using Domain.Entities;
+using Application.EntitiesUI;
 
 namespace Presentation
 {
@@ -44,6 +45,8 @@ namespace Presentation
             services.AddTransient<IShoppingCartRepository<ShoppingCart>, ShoppingCartRepository>();
             services.AddTransient<IOrderAppService<Order>, OrderAppService>();
             services.AddTransient<IOrderRepository<Order>, OrderRepository>();
+
+            services.AddTransient<ICatalogAppService<ProductCard>, CatalogAppService>();
 
 
             services.AddCors(options =>
