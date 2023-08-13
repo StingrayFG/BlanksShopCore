@@ -32,9 +32,9 @@ namespace Presentation.Controllers
 
         [HttpDelete]
         [Route("delete/product")]
-        public void DeleteProductByID(int customerID, int productID)
+        public void DeleteProduct(int customerID, int productID)
         {
-            _service.DeleteProductByID(customerID, productID);
+            _service.DeleteProduct(customerID, productID);
         }
 
         [HttpGet]
