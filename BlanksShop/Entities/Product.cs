@@ -17,7 +17,7 @@ namespace Domain.Entities
 
         public double? Weight { get; protected set; }
         public decimal? Price { get; protected set; }
-        public int? Count { get; protected set; }
+        public int Count { get; protected set; }
 
         public Product()
         {
@@ -40,7 +40,7 @@ namespace Domain.Entities
             Material = material;
         }
 
-        public void SetProperties(int id, string name, Dimensions dimensions, double? weight, decimal? price, int? count)
+        public void SetProperties(int id, string name, Dimensions dimensions, double? weight, decimal? price, int count)
         {
             ID = id;
             Name = name;
