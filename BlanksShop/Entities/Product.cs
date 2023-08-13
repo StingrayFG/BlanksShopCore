@@ -10,13 +10,13 @@ namespace Domain.Entities
 {
     public abstract class Product: EntityBase
     {
-        public string Name { get; set; }
-        public Dimensions Dimensions { get; set; }
-        public Material Material { get; set; }
+        public string Name { get; protected set; }
+        public Dimensions Dimensions { get; protected set; }
+        public Material Material { get; protected set; }
 
-        public double? Weight { get; set; }
-        public decimal? Price { get; set; }
-        public int? Count { get; set; }
+        public double? Weight { get; protected set; }
+        public decimal? Price { get; protected set; }
+        public int? Count { get; protected set; }
 
         public Product()
         {
