@@ -30,24 +30,79 @@ namespace Infrastructure.Repositories
             _metalBlankRepository = metalBlankRepository;
         }
 
-        public void Add(int shoppingCartID, int customerID, int productID)
+        public void AddProduct(ShoppingCart shoppingCart)
         {
-            MetalBlank? metalBlank = _metalBlankRepository.GetByID(productID);
-            if (metalBlank != null)
+            ShoppingCart? existingShoppingCart = GetByID(shoppingCart.ID);
+
+            DeleteByID(shoppingCart.ID);
+
+            foreach(Product product in shoppingCart.Products)
             {
                 _shoppingCartRepository.Add(new ShoppingCartEF()
                 {
-                    ID = shoppingCartID,
-                    CustomerID = customerID,
+                    ID = shoppingCart.ID,
+                    CustomerID = shoppingCart.CustomerID,
                     OrderID = null,
-                    ProductID = productID,
-                    Count = 1,
-                    Price = metalBlank.Price
+                    ProductID = product.ID,
+                    Count = product.Count,
                 });
             }
+            //if (existingShoppingCart == default(ShoppingCart)) 
+            //{
+            //    _shoppingCartRepository.Add(new ShoppingCartEF()
+            //    {
+            //        ID = shoppingCart.ID,
+            //        CustomerID = shoppingCart.CustomerID,
+            //        OrderID = null,
+            //        ProductID = shoppingCart.Products.First().ID,
+            //        Count = 1,
+            //        Price = shoppingCart.Price
+            //    });
+            //}
+            //else
+            //{
+            //    bool doesExist = false;
+            //    int existingCount = 0;
+            //    foreach (Product product in existingShoppingCart.Products)
+            //    {
+            //        if (product.ID == shoppingCart.Products.First().ID)
+            //        {
+            //            doesExist = true;
+            //            existingCount = product.Count;
+            //        }
+            //    }
+
+            //    if (!doesExist) 
+            //    {
+            //        _shoppingCartRepository.Add(new ShoppingCartEF()
+            //        {
+            //            ID = shoppingCart.ID,
+            //            CustomerID = shoppingCart.CustomerID,
+            //            OrderID = null,
+            //            ProductID = shoppingCart.Products.First().ID,
+            //            Count = 1,
+            //            Price = shoppingCart.Price
+            //        });
+            //    }
+            //    else
+            //    {
+            //        DeleteProduct(shoppingCart.ID, shoppingCart.Products.First().ID);
+
+            //        _shoppingCartRepository.Add(new ShoppingCartEF()
+            //        {
+            //            ID = shoppingCart.ID,
+            //            CustomerID = shoppingCart.CustomerID,
+            //            OrderID = null,
+            //            ProductID = shoppingCart.Products.First().ID,
+            //            Count = existingCount + 1,
+            //            Price = shoppingCart.Price
+            //        });
+            //    }
+            //}
+
         }
 
-        public void DeleteProductByID(int shoppingCartID, int productID)
+        public void DeleteProduct(int shoppingCartID, int productID)
         {
             List<ShoppingCartEF>? shoppingCartsEF = _shoppingCartRepository.GetAll();
             if (shoppingCartsEF != null)
@@ -84,14 +139,14 @@ namespace Infrastructure.Repositories
         public ShoppingCart? GetByID(int id)
         {
             List<ShoppingCart>? shoppingCarts = GetAll();
-            ShoppingCart? res = (from r in shoppingCarts where (r.ID == id) select r).First();
+            ShoppingCart? res = (from r in shoppingCarts where (r.ID == id) select r).FirstOrDefault();
             return res;
         }
 
         public ShoppingCart? GetCurrentByCustomer(int customerID)
         {
             List<ShoppingCart>? shoppingCarts = GetAll();
-            ShoppingCart? res = (from r in shoppingCarts where ((r.CustomerID == customerID) && (r.OrderID == null)) select r).Last();
+            ShoppingCart? res = (from r in shoppingCarts where ((r.CustomerID == customerID) && (r.OrderID == null)) select r).LastOrDefault();
             return res;
         }
 
@@ -109,7 +164,7 @@ namespace Infrastructure.Repositories
 
             if (shoppingCartsEF != null)
             {
-                int? currentID = shoppingCartsEF.First().ID;
+                int? currentID = shoppingCartsEF.FirstOrDefault().ID;
                 ShoppingCart currentCart = new ShoppingCart();
 
                 foreach (ShoppingCartEF shoppingCartEF in shoppingCartsEF)

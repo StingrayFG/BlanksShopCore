@@ -11,8 +11,8 @@ namespace Infrastructure.Interfaces
 {
     public interface IShoppingCartRepository<T>
     {
-        public void Add(int shoppingCartID, int customerID, int productID);
-        public void DeleteProductByID(int shoppingCartID, int productID);
+        public void AddProduct(T entity);
+        public void DeleteProduct(int shoppingCartID, int productID);
 
         public void UpdateOrder(int shoppingCartID, int orderID);
         public int GetLastID();

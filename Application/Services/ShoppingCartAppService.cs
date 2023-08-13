@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Application.Interfaces;
 using Domain.Entities;
+using Infrastructure.EntitiesEF;
 using Infrastructure.Interfaces;
 using Infrastructure.Repositories;
 
@@ -13,35 +14,46 @@ namespace Application.Services
     public class ShoppingCartAppService : IShoppingCartAppService<ShoppingCart>
     {
         protected IShoppingCartRepository<ShoppingCart> _shoppingCartRepository;
-        protected IRepository<MetalBlank> _blanksRepository;
+        protected IMetalBlankRepository<MetalBlank> _metalBlankRepository;
 
         public ShoppingCartAppService()
         {
             _shoppingCartRepository = new ShoppingCartRepository();
-            _blanksRepository = new Repository<MetalBlank>();
+            _metalBlankRepository = new MetalBlankRepository();
         }
 
-        public ShoppingCartAppService(ShoppingCartRepository repository, IRepository<MetalBlank> blanksRepository)
+        public ShoppingCartAppService(IShoppingCartRepository<ShoppingCart> shoppingCartRepository, IMetalBlankRepository<MetalBlank> metalBlankRepository)
         {
-            _shoppingCartRepository = repository;
-            _blanksRepository = blanksRepository;
+            _shoppingCartRepository = shoppingCartRepository;
+            _metalBlankRepository = metalBlankRepository;
         }
 
         public void AddProduct(int customerID, int productID)
         {
-            int? shoppingCartID = _shoppingCartRepository.GetCurrentByCustomer(customerID).ID;
-            if (shoppingCartID == null)
+            ShoppingCart? shoppingCart = _shoppingCartRepository.GetCurrentByCustomer(customerID);
+            MetalBlank? metalBlank = _metalBlankRepository.GetByID(productID);
+            if (metalBlank != null)
             {
-                _shoppingCartRepository.Add(_shoppingCartRepository.GetLastID() + 1, customerID, productID);
+                if (shoppingCart == default(ShoppingCart))
+                {
+                    shoppingCart = new ShoppingCart(_shoppingCartRepository.GetLastID() + 1, customerID);
+                }
+
+                metalBlank.UpdateCount(1);
+                shoppingCart.AddProduct(metalBlank);
+                _shoppingCartRepository.AddProduct(shoppingCart);
+
+                //metalBlank.UpdateCount(metalBlank.Count - 1);
+                //_metalBlankRepository.Update(metalBlank);
             }
         }
 
-        public void DeleteProductByID(int customerID, int productID)
+        public void DeleteProduct(int customerID, int productID)
         {
             ShoppingCart? shoppingCart = _shoppingCartRepository.GetCurrentByCustomer(customerID);
             if (shoppingCart != null) 
             {
-                _shoppingCartRepository.DeleteProductByID(shoppingCart.ID, productID);
+                _shoppingCartRepository.DeleteProduct(shoppingCart.ID, productID);
             }
             
         }
