@@ -47,58 +47,7 @@ namespace Infrastructure.Repositories
                     Count = product.Count,
                 });
             }
-            //if (existingShoppingCart == default(ShoppingCart)) 
-            //{
-            //    _shoppingCartRepository.Add(new ShoppingCartEF()
-            //    {
-            //        ID = shoppingCart.ID,
-            //        CustomerID = shoppingCart.CustomerID,
-            //        OrderID = null,
-            //        ProductID = shoppingCart.Products.First().ID,
-            //        Count = 1,
-            //        Price = shoppingCart.Price
-            //    });
-            //}
-            //else
-            //{
-            //    bool doesExist = false;
-            //    int existingCount = 0;
-            //    foreach (Product product in existingShoppingCart.Products)
-            //    {
-            //        if (product.ID == shoppingCart.Products.First().ID)
-            //        {
-            //            doesExist = true;
-            //            existingCount = product.Count;
-            //        }
-            //    }
-
-            //    if (!doesExist) 
-            //    {
-            //        _shoppingCartRepository.Add(new ShoppingCartEF()
-            //        {
-            //            ID = shoppingCart.ID,
-            //            CustomerID = shoppingCart.CustomerID,
-            //            OrderID = null,
-            //            ProductID = shoppingCart.Products.First().ID,
-            //            Count = 1,
-            //            Price = shoppingCart.Price
-            //        });
-            //    }
-            //    else
-            //    {
-            //        DeleteProduct(shoppingCart.ID, shoppingCart.Products.First().ID);
-
-            //        _shoppingCartRepository.Add(new ShoppingCartEF()
-            //        {
-            //            ID = shoppingCart.ID,
-            //            CustomerID = shoppingCart.CustomerID,
-            //            OrderID = null,
-            //            ProductID = shoppingCart.Products.First().ID,
-            //            Count = existingCount + 1,
-            //            Price = shoppingCart.Price
-            //        });
-            //    }
-            //}
+     
 
         }
 
