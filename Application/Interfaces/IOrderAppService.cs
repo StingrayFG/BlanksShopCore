@@ -13,6 +13,7 @@ namespace Application.Interfaces
     {
         public void Add(int customerID, string paymentMethod);
         public T? GetByID(int id);
+        public List<T>? GetByCustomer(int customerID);
         public List<T>? GetAll();
         public void UpdatePayment(int id, string payment);
         public void DeleteByID(int id);

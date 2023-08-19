@@ -42,6 +42,11 @@ namespace Application.Services
             return _orderRepository.GetByID(id);
         }
 
+        public List<Order>? GetByCustomer(int customerID)
+        {
+            return _orderRepository.GetByCustomer(customerID);
+        }
+
         public List<Order>? GetAll()
         {
             return _orderRepository.GetAll();
