@@ -14,6 +14,7 @@ namespace Infrastructure.Interfaces
         public void Add(T entity);
         public int GetLastID();
         public T? GetByID(int id);
+        public List<T>? GetByCustomer(int customerID);
         public List<T>? GetAll();
         public void Update(T entity);
         public void DeleteByID(int id);

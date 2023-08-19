@@ -7,6 +7,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Infrastructure.EntitiesEF;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Infrastructure.Repositories
 {
@@ -41,6 +42,14 @@ namespace Infrastructure.Repositories
             {
                 order.Convert(res);
             }
+            return res;
+        }
+
+        public List<Order>? GetByCustomer(int customerID)
+        {
+            List<Order>? orders = GetAll();
+            List<Order> res = (from r in orders where (r.CustomerID == customerID) select r).ToList();
+
             return res;
         }
 
