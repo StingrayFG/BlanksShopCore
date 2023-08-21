@@ -51,6 +51,11 @@ namespace Domain.Entities
             CustomerID = customerID;
         }
 
+        public void SetShoppingCart(ShoppingCart shoppingCart)
+        {
+            ShoppingCart = shoppingCart;
+        }
+
         public void CalcPrice()
         {
             Price = ShoppingCart.Price;

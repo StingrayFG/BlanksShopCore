@@ -41,6 +41,7 @@ namespace Infrastructure.Repositories
             if (order != null)
             {
                 order.Convert(res);
+                res.SetShoppingCart(_shoppingCartRepository.GetByOrder(order.ID));
             }
             return res;
         }
@@ -62,6 +63,7 @@ namespace Infrastructure.Repositories
             {
                 Order order = new Order();
                 orderEF.Convert(order);
+                order.SetShoppingCart(_shoppingCartRepository.GetByOrder(order.ID));
                 res.Add(order);
             }
 
