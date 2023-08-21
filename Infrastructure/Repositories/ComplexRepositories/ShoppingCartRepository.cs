@@ -92,6 +92,13 @@ namespace Infrastructure.Repositories
             return res;
         }
 
+        public ShoppingCart? GetByOrder(int orderID)
+        {
+            List<ShoppingCart>? shoppingCarts = GetAll();
+            ShoppingCart? res = (from r in shoppingCarts where (r.OrderID == orderID) select r).LastOrDefault();
+            return res;
+        }
+
         public ShoppingCart? GetCurrentByCustomer(int customerID)
         {
             List<ShoppingCart>? shoppingCarts = GetAll();

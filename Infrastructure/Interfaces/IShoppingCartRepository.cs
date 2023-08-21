@@ -17,6 +17,7 @@ namespace Infrastructure.Interfaces
         public void UpdateOrder(int shoppingCartID, int orderID);
         public int GetLastID();
         public T? GetByID(int id);
+        public T? GetByOrder(int orderID);
         public T? GetCurrentByCustomer(int customerID);
         public List<T>? GetByCustomer(int customerID);
         public List<T>? GetAll();
