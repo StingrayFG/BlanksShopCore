@@ -11,8 +11,7 @@ namespace Infrastructure.EntitiesEF
 {
     public class OrderEF: EntityBase
     {
-        public int ID { get; set; }
-        public DateTime OrderCreationDate { get; set; }
+        public DateTime CreationDate { get; set; }
         public decimal? Price { get; set; }
         public string? PaymentMethod { get; set; }
         public int CustomerID { get; set; }
@@ -25,7 +24,7 @@ namespace Infrastructure.EntitiesEF
         public OrderEF(Order order)
         {
             ID = order.ID;
-            OrderCreationDate = order.OrderCreationDate;
+            CreationDate = order.CreationDate;
             Price = order.Price;
             PaymentMethod = order.PaymentMethod;
             CustomerID = order.CustomerID;
@@ -33,7 +32,7 @@ namespace Infrastructure.EntitiesEF
 
         public void Convert(Order order)
         {
-            order.SetProperties(ID, OrderCreationDate, Price, PaymentMethod, CustomerID);
+            order.SetProperties(ID, CreationDate, Price, PaymentMethod, CustomerID);
         }
 
     }
