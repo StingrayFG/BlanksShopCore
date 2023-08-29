@@ -49,6 +49,11 @@ namespace Domain.Entities
             Price = price;
             Count = count;
         }
+        public void UpdateMaterial(Material material)
+        {
+            Material = material;
+            
+        }
 
         public void UpdateName(string name)
         {
