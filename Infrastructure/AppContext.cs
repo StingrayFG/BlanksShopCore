@@ -30,6 +30,8 @@ namespace Infrastructure
 
             var config = builder.Build();
 
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
             string connectionString = config.GetConnectionString("DefaultConnection");
             optionsBuilder.UseNpgsql("Host=localhost; Database=BlanksShop; Username=postgres; Password=123");
         }
