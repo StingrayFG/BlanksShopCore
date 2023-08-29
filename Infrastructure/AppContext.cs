@@ -23,16 +23,15 @@ namespace Infrastructure
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json");
 
             var config = builder.Build();
 
-            //string connectionString = config.GetConnectionString("DefaultConnection");
-            string connectionString = "Server=localhost\\SQLEXPRESS; Database=pr; Trusted_Connection=True; TrustServerCertificate=true;";
-
-            optionsBuilder.UseSqlServer(connectionString);
+            string connectionString = config.GetConnectionString("DefaultConnection");
+            optionsBuilder.UseNpgsql("Host=localhost; Database=BlanksShop; Username=postgres; Password=123");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
