@@ -11,6 +11,7 @@ namespace Domain.Entities
         public string Name { get; private set; }
         public double Density { get; private set; }
         public decimal? PricePerKilogram { get; private set; }
+        public string? Description { get; private set; }
 
         public Material() { }
 
