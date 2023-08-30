@@ -38,6 +38,7 @@ namespace Presentation
             services.AddTransient<IRepository<Customer>, Repository<Customer>>();
             services.AddTransient<IMaterialAppService, MaterialAppService>();
             services.AddTransient<IRepository<Material>, Repository<Material>>();
+            services.AddTransient<IRepository<ProductType>, Repository<ProductType>>();
 
             services.AddTransient<IMetalBlankAppService<MetalBlank>, MetalBlankAppService>();
             services.AddTransient<IMetalBlankRepository<MetalBlank>, MetalBlankRepository>();

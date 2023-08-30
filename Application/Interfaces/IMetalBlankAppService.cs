@@ -15,8 +15,8 @@ namespace Application.Interfaces
         public T? GetByID(int id);
         public List<T>? GetAll();
         public void DeleteByID(int id);
-        public void Add(string name, Dimensions dimensions, int materialID);
-        public void UpdateName(int id, string name);
+        public void Add(Dimensions dimensions, int materialID, int productTypeID);
+        public void UpdateProductType(int id, int productTypeID);
         public void UpdateMaterial(int id, int materialID);
 
     }

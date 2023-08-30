@@ -25,16 +25,16 @@ namespace Presentation.Controllers
 
         [HttpPost]
         [Route("add")]
-        public void Add(string name, Dimensions dimensions, int materialID)
+        public void Add(Dimensions dimensions, int materialID, int productTypeID)
         {
-            _service.Add(name, dimensions, materialID);
+            _service.Add(dimensions, materialID, productTypeID);
         }
 
         [HttpPut]
-        [Route("update/name")]
-        public void UpdateName(int id, string name)
+        [Route("update/producttype")]
+        public void UpdateProductType(int id, int productTypeID)
         {
-            _service.UpdateName(id, name);
+            _service.UpdateProductType(id, productTypeID);
         }
 
         [HttpPut]

@@ -14,18 +14,20 @@ namespace Infrastructure.Repositories
     {
         private IRepository<MetalBlankEF> _metalBlankRepository;
         private IRepository<Material> _materialRepository;
-
+        private IRepository<ProductType> _productTypeRepository;
 
         public MetalBlankRepository()
         {
             _metalBlankRepository = new Repository<MetalBlankEF>();
             _materialRepository = new Repository<Material>();
+            _productTypeRepository = new Repository<ProductType>();
         }
 
-        public MetalBlankRepository(IRepository<MetalBlankEF> metalBlankRepository, IRepository<Material> materialRepository)
+        public MetalBlankRepository(IRepository<MetalBlankEF> metalBlankRepository, IRepository<Material> materialRepository, IRepository<ProductType> productTypeRepository)
         {
             _metalBlankRepository = metalBlankRepository;
             _materialRepository = materialRepository;
+            _productTypeRepository = productTypeRepository;
         }
 
         public void Add(MetalBlank metalBlank)
@@ -44,11 +46,18 @@ namespace Infrastructure.Repositories
             MetalBlankEF? metalBlankEF = _metalBlankRepository.GetByID(id);
             if (metalBlankEF != null)
             {
-                Material? material = _materialRepository.GetByID(metalBlankEF.MaterialID);
                 MetalBlank metalBlank = new MetalBlank();
+
+                Material? material = _materialRepository.GetByID(metalBlankEF.MaterialID);           
                 if (material != null)
                 {
                     metalBlank.UpdateMaterial(material);
+                }
+
+                ProductType? productType = _productTypeRepository.GetByID(metalBlankEF.ProductTypeID);
+                if (productType != null)
+                {
+                    metalBlank.UpdateProductType(productType);
                 }
 
                 metalBlankEF.Convert(metalBlank);
@@ -69,15 +78,22 @@ namespace Infrastructure.Repositories
                 List<MetalBlank> res = new List<MetalBlank>();
                 foreach (MetalBlankEF metalBlankEF in metalBlanksEF)
                 {
-                    Material? material = _materialRepository.GetByID(metalBlankEF.MaterialID);
                     MetalBlank metalBlank = new MetalBlank();
-                    if(material != null)
+
+                    Material? material = _materialRepository.GetByID(metalBlankEF.MaterialID);
+                    if (material != null)
                     {
                         metalBlank.UpdateMaterial(material);
                     }
 
+                    ProductType? productType = _productTypeRepository.GetByID(metalBlankEF.ProductTypeID);
+                    if (productType != null)
+                    {
+                        metalBlank.UpdateProductType(productType);
+                    }
+
                     metalBlankEF.Convert(metalBlank);
-                    
+
                     res.Add(metalBlank);
                 }
                 return res;

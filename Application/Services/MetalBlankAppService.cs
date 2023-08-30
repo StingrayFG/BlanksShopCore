@@ -15,25 +15,29 @@ namespace Application.Services
     {
         protected IMetalBlankRepository<MetalBlank> _repository;
         protected IRepository<Material> _materialsRepository;
+        protected IRepository<ProductType> _productTypeRepository;
 
         public MetalBlankAppService()
         {
             _repository = new MetalBlankRepository();
             _materialsRepository = new Repository<Material>();
+            _productTypeRepository = new Repository<ProductType>();
         }
 
-        public MetalBlankAppService(IMetalBlankRepository<MetalBlank> repository, IRepository<Material> materialsRepository)
+        public MetalBlankAppService(IMetalBlankRepository<MetalBlank> repository, IRepository<Material> materialsRepository, IRepository<ProductType> productTypeRepository)
         {
             _repository = repository;
             _materialsRepository = materialsRepository;
+            _productTypeRepository = productTypeRepository;
         }
 
-        public void Add(string name, Dimensions dimensions, int materialID)
+        public void Add(Dimensions dimensions, int materialID, int productTypeID)
         {
             Material? material = _materialsRepository.GetByID(materialID);
-            if (material != null) 
+            ProductType? productType = _productTypeRepository.GetByID(productTypeID);
+            if ((material != null) && (productType != null))
             {
-                MetalBlank res = new MetalBlank(_repository.GetLastID() + 1, name, dimensions, material);
+                MetalBlank res = new MetalBlank(_repository.GetLastID() + 1,  dimensions, material, productType);
                 _repository.Add(res);
             }     
         }
@@ -50,12 +54,13 @@ namespace Application.Services
         }
 
 
-        public void UpdateName(int id, string name)
+        public void UpdateProductType(int id, int productTypeID)
         {
+            ProductType? productType = _productTypeRepository.GetByID(productTypeID);
             MetalBlank? res = _repository.GetByID(id);
-            if (res != null)
+            if ((productType != null) && (res != null))
             {
-                res.UpdateName(name);
+                res.UpdateProductType(productType);
                 _repository.Update(res);
             }
 
