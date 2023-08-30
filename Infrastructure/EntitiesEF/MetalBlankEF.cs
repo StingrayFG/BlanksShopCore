@@ -11,11 +11,11 @@ namespace Infrastructure.EntitiesEF
     public class MetalBlankEF: EntityBase
     {
         public int ID { get; set; }
-        public string Name { get; set; }
         public double Width { get; set; }
         public double Height { get; set; }
         public double Length { get; set; }
         public int MaterialID { get; set; }
+        public int ProductTypeID { get; set; }
 
         public double? Weight { get; set; }
         public decimal? Price { get; set; }
@@ -29,11 +29,11 @@ namespace Infrastructure.EntitiesEF
         public MetalBlankEF(MetalBlank metalBlank)
         {
             ID = metalBlank.ID;
-            Name = metalBlank.Name;
             Width = metalBlank.Dimensions.Width;
             Height = metalBlank.Dimensions.Height;
             Length = metalBlank.Dimensions.Length;
             MaterialID = metalBlank.Material.ID;
+            ProductTypeID = metalBlank.ProductType.ID;
             Weight = metalBlank.Weight;
             Price = metalBlank.Price;
             Count = metalBlank.Count;
@@ -41,7 +41,7 @@ namespace Infrastructure.EntitiesEF
 
         public void Convert(MetalBlank metalBlank)
         {
-            metalBlank.SetProperties(ID, Name, new Dimensions(Width, Height, Length), Weight, Price, Count);
+            metalBlank.SetProperties(ID, new Dimensions(Width, Height, Length), Weight, Price, Count);
         }
     }
 }
