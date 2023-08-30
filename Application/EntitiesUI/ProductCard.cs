@@ -11,25 +11,30 @@ namespace Application.EntitiesUI
     {
         public int ID { get; private set; }
         public string Name { get; private set; }
-        public string MaterialName { get; private set; }
+        public Material Material { get; private set; }
         public List<Product> Products { get; private set; } = new List<Product>();
 
-        public ProductCard(string name, string materialName)
+        public ProductCard(string name, Material material)
         {
             Name = name;
-            MaterialName = materialName;
+            Material = material;
         }
 
-        public ProductCard(int id, string name, string materialName)
+        public ProductCard(int id, string name, Material material)
         {
             ID = id;
             Name = name;
-            MaterialName = materialName;
+            Material = material;
         }
 
-        public void AddProduct(Product product) 
+        public void AddProduct(Product product)
         {
-            Products.Add(product);  
+            Products.Add(product);
+        }
+
+        public void SortProducts()
+        {
+            Products = Products.OrderBy(p => p.Dimensions.Length).ToList();
         }
     }
 }
