@@ -103,6 +103,11 @@ namespace Infrastructure.Repositories
         {
             List<ShoppingCart>? shoppingCarts = GetAll();
             ShoppingCart? res = (from r in shoppingCarts where ((r.CustomerID == customerID) && (r.OrderID == null)) select r).LastOrDefault();
+            if(res != null) 
+            {
+                res.SortProducts();
+            }
+            
             return res;
         }
 

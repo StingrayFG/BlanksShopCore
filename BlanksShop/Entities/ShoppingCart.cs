@@ -81,5 +81,12 @@ namespace Domain.Entities
             Products.Remove(product);
             RecalcPrice();
         }
+
+        public void SortProducts()
+        {
+            Products = Products.OrderBy(p => p.Material.Name)
+                .ThenBy(p => p.ProductType.Name)
+                .ToList();
+        }
     }
 }

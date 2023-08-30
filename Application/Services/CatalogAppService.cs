@@ -32,7 +32,7 @@ namespace Application.Services
                 int lastUsedID = 0;
                 foreach (MetalBlank metalBlank in metalBlanks)
                 {
-                    ProductCard? productCard = res.Where(e => e.MaterialName == metalBlank.Material.Name && e.Name == metalBlank.Name).FirstOrDefault();
+                    ProductCard? productCard = res.Where(e => e.Material.Name == metalBlank.Material.Name && e.Name == metalBlank.ProductType.Name).FirstOrDefault();
                     if (productCard != default(ProductCard))
                     {
                         productCard.AddProduct(metalBlank);
@@ -40,10 +40,15 @@ namespace Application.Services
                     else
                     {
                         lastUsedID++;
-                        ProductCard newProductCard = new ProductCard(lastUsedID, metalBlank.Name, metalBlank.Material.Name);
+                        ProductCard newProductCard = new ProductCard(lastUsedID, metalBlank.ProductType.Name, metalBlank.Material);
                         newProductCard.AddProduct(metalBlank);
                         res.Add(newProductCard);
                     }
+                }
+
+                foreach (ProductCard productCard in res) 
+                {
+                    productCard.SortProducts();
                 }
             }
             return res;
