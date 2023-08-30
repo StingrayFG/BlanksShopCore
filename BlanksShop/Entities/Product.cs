@@ -11,9 +11,9 @@ namespace Domain.Entities
 {
     public abstract class Product: EntityBase
     {
-        public string Name { get; protected set; }
         public Dimensions Dimensions { get; protected set; }
         public Material Material { get; protected set; }
+        public ProductType ProductType { get; protected set; }
 
         public double? Weight { get; protected set; }
         public decimal? Price { get; protected set; }
@@ -24,26 +24,25 @@ namespace Domain.Entities
 
         }
 
-        public Product(int id, string name, Dimensions dimensions, Material material)
+        public Product(int id, Dimensions dimensions, Material material, ProductType productType)
         {
             ID = id;
-            Name = name;
             Dimensions = dimensions;
             Material = material;
+            ProductType = productType;
         }
 
-        public Product(string name, Dimensions dimensions, Material material)
+        public Product(Dimensions dimensions, Material material, ProductType productType)
         {
             ID = 0;
-            Name = name;
             Dimensions = dimensions;
             Material = material;
+            ProductType = productType;
         }
 
-        public void SetProperties(int id, string name, Dimensions dimensions, double? weight, decimal? price, int count)
+        public void SetProperties(int id, Dimensions dimensions, double? weight, decimal? price, int count)
         {
             ID = id;
-            Name = name;
             Dimensions = dimensions;
             Weight = weight;
             Price = price;
@@ -55,10 +54,11 @@ namespace Domain.Entities
             
         }
 
-        public void UpdateName(string name)
+        public void UpdateProductType(ProductType productType)
         {
-            Name = name;
+            ProductType = productType;
         }
+
 
         public void UpdateCount(int count)
         {
