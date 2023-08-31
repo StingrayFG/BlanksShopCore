@@ -10,21 +10,21 @@ namespace Application.EntitiesUI
     public class ProductCard
     {
         public int ID { get; private set; }
-        public string Name { get; private set; }
+        public ProductType ProductType { get; private set; }
         public Material Material { get; private set; }
         public List<Product> Products { get; private set; } = new List<Product>();
 
-        public ProductCard(string name, Material material)
+        public ProductCard(Material material, ProductType productType)
         {
-            Name = name;
             Material = material;
+            ProductType = productType;
         }
 
-        public ProductCard(int id, string name, Material material)
+        public ProductCard(int id, Material material, ProductType productType)
         {
             ID = id;
-            Name = name;
             Material = material;
+            ProductType = productType;
         }
 
         public void AddProduct(Product product)
