@@ -42,9 +42,7 @@ namespace Application.Services
                 metalBlank.UpdateCount(1);
                 shoppingCart.AddProduct(metalBlank);
                 _shoppingCartRepository.AddProduct(shoppingCart);
-
-                //metalBlank.UpdateCount(metalBlank.Count - 1);
-                //_metalBlankRepository.Update(metalBlank);
+ 
             }
         }
 
