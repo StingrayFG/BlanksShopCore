@@ -30,13 +30,13 @@ namespace Infrastructure.Repositories
             _metalBlankRepository = metalBlankRepository;
         }
 
-        public void AddProduct(ShoppingCart shoppingCart)
+        public void Update(ShoppingCart shoppingCart)
         {
             ShoppingCart? existingShoppingCart = GetByID(shoppingCart.ID);
 
             DeleteByID(shoppingCart.ID);
 
-            foreach(Product product in shoppingCart.Products)
+            foreach (Product product in shoppingCart.Products)
             {
                 _shoppingCartRepository.Add(new ShoppingCartEF()
                 {
@@ -47,8 +47,6 @@ namespace Infrastructure.Repositories
                     Count = product.Count,
                 });
             }
-     
-
         }
 
         public void DeleteProduct(int shoppingCartID, int productID)
