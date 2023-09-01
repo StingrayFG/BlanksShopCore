@@ -31,6 +31,13 @@ namespace Presentation.Controllers
         }
 
         [HttpDelete]
+        [Route("update/product/count")]
+        public void UpdateProductCount(int customerID, int productID, int count)
+        {
+            _service.UpdateProductCount(customerID, productID, count);
+        }
+
+        [HttpDelete]
         [Route("delete/product")]
         public void DeleteProduct(int customerID, int productID)
         {

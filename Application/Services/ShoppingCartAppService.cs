@@ -41,9 +41,30 @@ namespace Application.Services
 
                 metalBlank.UpdateCount(1);
                 shoppingCart.AddProduct(metalBlank);
-                _shoppingCartRepository.AddProduct(shoppingCart);
+                _shoppingCartRepository.Update(shoppingCart);
  
             }
+        }
+
+        public void UpdateProductCount(int customerID, int productID, int count)
+        {
+            ShoppingCart? shoppingCart = _shoppingCartRepository.GetCurrentByCustomer(customerID);
+            if (shoppingCart != null) 
+            {
+                Product product = (from p in shoppingCart.Products where (p.ID == productID) select p).FirstOrDefault();
+                {
+                    if (product == default) 
+                    {
+                        AddProduct(customerID, productID);
+                    }
+                    else if (product != null) 
+                    {
+                        product.UpdateCount(count);     
+                    }
+                    _shoppingCartRepository.Update(shoppingCart);
+                }
+            }
+            
         }
 
         public void DeleteProduct(int customerID, int productID)

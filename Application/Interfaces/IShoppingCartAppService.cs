@@ -12,6 +12,7 @@ namespace Application.Interfaces
     public interface IShoppingCartAppService<T>
     {
         public void AddProduct(int customerID, int productID);
+        public void UpdateProductCount(int customerID, int productID, int count);
         public void DeleteProduct(int customerID, int productID);
 
         public T? GetByID(int id);
