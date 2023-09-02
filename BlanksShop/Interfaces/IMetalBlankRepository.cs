@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.Entities;
 
-namespace Infrastructure.Interfaces
+namespace Domain.Interfaces
 {
     public interface IMetalBlankRepository<T>
     {

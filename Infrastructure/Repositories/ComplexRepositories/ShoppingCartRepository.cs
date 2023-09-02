@@ -1,5 +1,5 @@
 ﻿using Domain.Entities;
-using Infrastructure.Interfaces;
+using Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

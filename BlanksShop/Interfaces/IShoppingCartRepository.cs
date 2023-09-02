@@ -7,16 +7,20 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.Entities;
 
-namespace Infrastructure.Interfaces
+namespace Domain.Interfaces
 {
-    public interface IOrderRepository<T>
+    public interface IShoppingCartRepository<T>
     {
-        public void Add(T entity);
+        public void Update(T entity);
+        public void DeleteProduct(int shoppingCartID, int productID);
+
+        public void UpdateOrder(int shoppingCartID, int orderID);
         public int GetLastID();
         public T? GetByID(int id);
+        public T? GetByOrder(int orderID);
+        public T? GetCurrentByCustomer(int customerID);
         public List<T>? GetByCustomer(int customerID);
         public List<T>? GetAll();
-        public void Update(T entity);
         public void DeleteByID(int id);
 
     }
