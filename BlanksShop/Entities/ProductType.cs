@@ -12,5 +12,24 @@ namespace Domain.Entities
         public string? Description { get; protected set; }
 
         public ProductType() { }
+
+        public ProductType(int id, string name, string description) 
+        {
+            ID = id;
+            Name = name;
+            Description = description;
+        }
+
+        public ProductType(string name, string description)
+        {
+            Name = name;
+            Description = description;
+        }
+
+        public void UpdateName(string name)
+        {
+            Name = name;
+        }
+
     }
 }

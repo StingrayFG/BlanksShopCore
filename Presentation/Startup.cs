@@ -36,12 +36,14 @@ namespace Presentation
         {
             services.AddTransient<ICustomerAppService, CustomerAppService>();
             services.AddTransient<IRepository<Customer>, Repository<Customer>>();
+            
             services.AddTransient<IMaterialAppService, MaterialAppService>();
             services.AddTransient<IRepository<Material>, Repository<Material>>();
+            services.AddTransient<IProductTypeAppService, ProductTypeAppService>();
             services.AddTransient<IRepository<ProductType>, Repository<ProductType>>();
-
             services.AddTransient<IMetalBlankAppService<MetalBlank>, MetalBlankAppService>();
             services.AddTransient<IMetalBlankRepository<MetalBlank>, MetalBlankRepository>();
+
             services.AddTransient<IShoppingCartAppService<ShoppingCart>, ShoppingCartAppService>();
             services.AddTransient<IShoppingCartRepository<ShoppingCart>, ShoppingCartRepository>();
             services.AddTransient<IOrderAppService<Order>, OrderAppService>();
@@ -67,6 +69,7 @@ namespace Presentation
                 options.SwaggerDoc("shoppingcart", new OpenApiInfo { Title = "shoppingcart", Version = "v1" });
                 options.SwaggerDoc("metalblank", new OpenApiInfo { Title = "metalblank", Version = "v1" });
                 options.SwaggerDoc("material", new OpenApiInfo { Title = "material", Version = "v1" });
+                options.SwaggerDoc("producttype", new OpenApiInfo { Title = "producttype", Version = "v1" });
                 options.SwaggerDoc("catalog", new OpenApiInfo { Title = "catalog", Version = "v1" });
             });
         }
@@ -83,6 +86,7 @@ namespace Presentation
                     options.SwaggerEndpoint("/swagger/customer/swagger.json", "customer");
                     options.SwaggerEndpoint("/swagger/metalblank/swagger.json", "metalblank");
                     options.SwaggerEndpoint("/swagger/material/swagger.json", "material");
+                    options.SwaggerEndpoint("/swagger/producttype/swagger.json", "producttype");
                     options.SwaggerEndpoint("/swagger/order/swagger.json", "order");
                     options.SwaggerEndpoint("/swagger/shoppingcart/swagger.json", "shoppingcart");
                     options.SwaggerEndpoint("/swagger/catalog/swagger.json", "catalog");
