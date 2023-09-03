@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Application.Interfaces;
 using Domain.Entities;
-using Infrastructure.Interfaces;
+using Domain.Interfaces;
 using Infrastructure.Repositories;
 
 namespace Application.Services

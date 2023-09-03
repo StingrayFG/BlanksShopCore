@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 using Application.Interfaces;
 using Application.Services;
 using Presentation.Controllers;
-using Infrastructure.Interfaces;
+using Domain.Interfaces;
 using Infrastructure.Repositories;
 using Domain.Entities;
 using Application.EntitiesUI;
